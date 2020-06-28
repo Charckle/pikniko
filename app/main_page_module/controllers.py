@@ -49,6 +49,24 @@ def index():
 
     return render_template("main_page_module/index.html")
 
+@main_page_module.route('/plan/', methods=['POST'])
+@login_required
+def plan_create():
+    key = request.form["key"]
+
+    banana = WSearch()
+    if key == "":
+        asterix = ""
+    else:
+        asterix = "*"
+    res = banana.index_search(key + asterix)
+    
+    #get IDs of the notes the user can access
+    user_notes = note_sql_get_all_active_of_user(session['user_id'])
+    results = {r[0]: [r[1], r[2]] for r in res if (int(r[0]) in user_notes)}
+    
+    return jsonify(results)
+
 @main_page_module.route('/search/', methods=['GET'])
 @login_required
 def search():
