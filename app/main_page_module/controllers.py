@@ -2,14 +2,10 @@
 from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for, jsonify, send_file
 
-from app import connection, cursor
+#from app import connection, cursor
 # Import module forms
 from app.main_page_module.forms import LoginForm, RegisterForm, EntryForm, EditEntryForm, EditUserForm
 
-# Import module models (i.e. User)
-from app.main_page_module.models import SharedNotes, User, Note, user_sql_create, user_sql_login_check, user_sql_get_all, \
-     user_sql_get_one, user_sql_delete_one, user_sql_update_one, note_sql_create, note_user_table_sql_create, note_sql_get_one, \
-     note_sql_get_all_active, note_sql_delete_one, note_sql_update_one, note_sql_get_all_trashed, note_sql_trash_one, note_sql_get_all_active_of_user
 
 #import os
 import re
@@ -21,7 +17,6 @@ from functools import wraps
 import datetime
 
 
-from app.main_page_module.argus import WSearch
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 main_page_module = Blueprint('main_page_module', __name__, url_prefix='/')

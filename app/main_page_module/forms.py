@@ -7,7 +7,6 @@ from wtforms import BooleanField, StringField, TextAreaField, PasswordField, Hid
 # Import Form validators
 from wtforms.validators import Email, EqualTo, ValidationError
 
-from app.main_page_module.models import user_sql_check_username, user_sql_check_email
 
 #email verification
 import re
