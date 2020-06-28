@@ -1,0 +1,382 @@
+{% extends "main_page_module/base.html" %}
+
+{% block extraheader %}
+{% endblock extraheader  %}
+
+{% block nav_index %}active{% endblock nav_index %}
+
+
+{% block flashes %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div>
+        {% for category, message in messages %}
+          {% if category == "error" %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% else %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock flashes %}
+
+
+{% block content%}
+<br>
+<div class="container-fluid" style="background-color: rgb(255, 255, 255)">
+  <div class="row">
+    <div class="col-md">
+      <!-- insert column here -->
+    </div>
+    <div class="col-md-6">
+
+      <h1>Piknik?!</h1>
+      <hr>
+      <div class="container">
+        <form>
+          <div class="form-group">
+              <script>
+                  function updatePeople(slideAmount) {
+                      var peopleAtPiknik = document.getElementById("stoseb");
+                      peopleAtPiknik.innerHTML = slideAmount;
+
+                      //doloci vegije
+                      var vegiAtPiknik = document.getElementById("stveg");
+                      vegiAtPiknik.innerHTML = "0";
+                      var vegiSlider = document.getElementById("vegiSlider");
+                      vegiSlider.setAttribute('min', '0');
+                      vegiSlider.setAttribute('max', slideAmount);
+                      vegiSlider.setAttribute('value', 0);
+                  }
+              </script>
+            <label for="formGroupExampleInput">Število Oseb</label> - <span class="badge badge-danger" id="stoseb">10</span>
+            <input type="range" class="form-control-range" id="formControlRange" min="1" max="50" value="10" onchange="updatePeople(this.value)">
+          </div>
+          <div class="form-group">
+              <script>
+                  function updateVeg(slideAmount) {
+                      var peopleAtPiknik = document.getElementById("stveg");
+                      peopleAtPiknik.innerHTML = slideAmount;
+                  }
+              </script>
+            <label for="vegiSlider">Od tega Vegetarjancev/Veganov</label> - <span class="badge badge-success" id="stveg">0</span>
+            <input type="range" class="form-control-range" id="vegiSlider" min="1" max="10" value="0" onchange="updateVeg(this.value)">
+          </div>
+          <hr>
+          
+          <div class="card text-white bg-danger mb-3">
+            <div class="card-header">
+              Meso
+            </div>
+            <div class="card-body">
+                <script>
+                    function updatecevap(slideAmount) {
+                        var cevapbag = document.getElementById("cevapbag");
+
+                        if (slideAmount == 0) {
+                          stanje = "Nič";
+                        } else if (slideAmount < 10) {
+                          stanje = "Malo";
+                        }  else if (slideAmount < 25) {
+                          stanje = "Nekaj";
+                        } else if (slideAmount < 40) {
+                          stanje = "Zmerno";
+                        } else {
+                          stanje = "Veliko";
+                        }
+
+                        cevapbag.innerHTML = stanje;
+                    }
+
+                    function updateplesk(slideAmount) {
+                        var pleskbag = document.getElementById("pleskbag");
+
+                        if (slideAmount == 0) {
+                          stanje = "Nič";
+                        } else if (slideAmount < 10) {
+                          stanje = "Malo";
+                        }  else if (slideAmount < 25) {
+                          stanje = "Nekaj";
+                        } else if (slideAmount < 40) {
+                          stanje = "Zmerno";
+                        } else {
+                          stanje = "Veliko";
+                        }
+
+                        pleskbag.innerHTML = stanje;
+                    }
+
+                    function updatevrat(slideAmount) {
+                        var vratbag = document.getElementById("vratbag");
+
+                        if (slideAmount == 0) {
+                          stanje = "Nič";
+                        } else if (slideAmount < 10) {
+                          stanje = "Malo";
+                        }  else if (slideAmount < 25) {
+                          stanje = "Nekaj";
+                        } else if (slideAmount < 40) {
+                          stanje = "Zmerno";
+                        } else {
+                          stanje = "Veliko";
+                        }
+
+                        vratbag.innerHTML = stanje;
+                    }
+                </script>
+              <div class="form-group">
+                <label for="cevap">Čevapčiči</label> - <span class="badge badge-pill badge-light" id="cevapbag">Veliko</span>
+                <input type="range" class="form-control-range" id="cevap" min="1" max="50" value="50" onchange="updatecevap(this.value)">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Pleskavice</label> - <span class="badge badge-pill badge-light" id="pleskbag">Malo</span>
+                <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="10" onchange="updateplesk(this.value)">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Vratovina</label> - <span class="badge badge-pill badge-light" id="vratbag">Nekaj</span>
+                <input type="range" class="form-control-range" id="vratovina" min="0" max="50" value="20" onchange="updatevrat(this.value)">
+              </div>
+            </div>
+          </div>
+          <div class="card border-success mb-3">
+              <div class="card-header">
+                Zelenjava
+              </div>
+
+              <script>
+                  function updatebucke(slideAmount) {
+                      var bucbag = document.getElementById("bucbag");
+
+                      if (slideAmount == 0) {
+                        stanje = "Nič";
+                      } else if (slideAmount < 10) {
+                        stanje = "Malo";
+                      }  else if (slideAmount < 25) {
+                        stanje = "Nekaj";
+                      } else if (slideAmount < 40) {
+                        stanje = "Zmerno";
+                      } else {
+                        stanje = "Veliko";
+                      }
+
+                      bucbag.innerHTML = stanje;
+                  }
+
+                  function updategobe(slideAmount) {
+                      var gobbag = document.getElementById("gobbag");
+
+                      if (slideAmount == 0) {
+                        stanje = "Nič";
+                      } else if (slideAmount < 10) {
+                        stanje = "Malo";
+                      }  else if (slideAmount < 25) {
+                        stanje = "Nekaj";
+                      } else if (slideAmount < 40) {
+                        stanje = "Zmerno";
+                      } else {
+                        stanje = "Veliko";
+                      }
+
+                      gobbag.innerHTML = stanje;
+                  }
+
+                  function updatepaprik(slideAmount) {
+                      var paprikbag = document.getElementById("paprikbag");
+
+                      if (slideAmount == 0) {
+                        stanje = "Nič";
+                      } else if (slideAmount < 10) {
+                        stanje = "Malo";
+                      }  else if (slideAmount < 25) {
+                        stanje = "Nekaj";
+                      } else if (slideAmount < 40) {
+                        stanje = "Zmerno";
+                      } else {
+                        stanje = "Veliko";
+                      }
+
+                      paprikbag.innerHTML = stanje;
+                  }
+              </script>
+
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Bučke</label> - <span class="badge badge-pill badge-success" id="bucbag">Dosti</span>
+                  <input type="range" class="form-control-range" id="formControlRange" min="1" max="50" value="50" onchange="updategobe(this.value)">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Gobice</label> - <span class="badge badge-pill badge-success" id="gobbag">Malo</span>
+                  <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="9" onchange="updategobe(this.value)">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Paprika</label> - <span class="badge badge-pill badge-danger" id="paprikbag">Nekaj</span>
+                  <input type="range" class="form-control-range" id="vratovina" min="0" max="50" value="20" onchange="updatepaprik(this.value)">
+                </div>
+              </div>
+            </div>
+
+          <div class="card border-info mb-3">
+            <div class="card-header">
+              Pijača
+            </div>
+
+            <script>
+                function updatepivo(slideAmount) {
+                    var pivbag = document.getElementById("pivbag");
+
+                    if (slideAmount == 0) {
+                      stanje = "Nič";
+                    } else if (slideAmount < 10) {
+                      stanje = "Malo";
+                    }  else if (slideAmount < 25) {
+                      stanje = "Nekaj";
+                    } else if (slideAmount < 40) {
+                      stanje = "Zmerno";
+                    } else {
+                      stanje = "Veliko";
+                    }
+
+                    pivbag.innerHTML = stanje;
+                }
+
+                function updatesok(slideAmount) {
+                    var sokbag = document.getElementById("sokbag");
+
+                    if (slideAmount == 0) {
+                      stanje = "Nič";
+                    } else if (slideAmount < 10) {
+                      stanje = "Malo";
+                    }  else if (slideAmount < 25) {
+                      stanje = "Nekaj";
+                    } else if (slideAmount < 40) {
+                      stanje = "Zmerno";
+                    } else {
+                      stanje = "Veliko";
+                    }
+
+                    sokbag.innerHTML = stanje;
+                }
+
+                function updateled(slideAmount) {
+                    var ledbag = document.getElementById("ledbag");
+
+                    if (slideAmount == 0) {
+                      stanje = "Nič";
+                    } else if (slideAmount < 10) {
+                      stanje = "Malo";
+                    }  else if (slideAmount < 25) {
+                      stanje = "Nekaj";
+                    } else if (slideAmount < 35) {
+                      stanje = "Vsaka pijača ima led";
+                    } else {
+                      stanje = "Bolj led kot pijača";
+                    }
+
+                    ledbag.innerHTML = stanje;
+                }
+            </script>
+
+            <div class="card-body">
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Pivo</label> - <span class="badge badge-pill badge-warning" id="pivbag">Veliko</span>
+                <input type="range" class="form-control-range" id="formControlRange" min="1" max="50" value="50" onchange="updatepivo(this.value)">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Sokovi</label> - <span class="badge badge-pill badge-info" id="sokbag">Nekaj</span>
+                <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="40" onchange="updatesok(this.value)">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Led</label> - <span class="badge badge-pill badge-info" id="ledbag">Malo</span>
+                <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="9" onchange="updateled(this.value)">
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <input type="submit" class="form-control-range btn btn-success" value="Izračunaj!" style="position: fixed; bottom: 4px; right: 0px; left: 0px;">
+          </div>
+          <br>  
+        </form>
+      </div>
+      <script>
+        
+        function load_results(){
+          var search_key = document.getElementById("search").value;
+
+          var results=[];
+
+          $.post('/search/', {"key": search_key}, function(data, textStatus) {
+            //data contains the JSON object
+            //textStatus contains the status: success, error, etc
+
+            var searchResults = document.createElement("div");
+            searchResults.setAttribute('class', 'container');
+            var count = Object(data);
+            console.log(count);
+
+            if (0 < Object.keys(data).length) {
+
+              for (const [key, value] of Object.entries(data)) {
+                var newMedia = document.createElement("div")
+                newMedia.setAttribute('class', 'media  bg-light');
+
+                var newBodyLink = document.createElement("a")
+                newBodyLink.setAttribute('class', 'btn btn-secondary align-self-center mr-3');
+                newBodyLink.setAttribute('href', '/view_entry/' + value[0]);
+                newBodyLink.textContent = "View the content";
+
+                var newBody = document.createElement("div")
+                newBody.setAttribute('class', 'media-body');
+
+                var newBodyTitle = document.createElement("h5")
+                newBodyTitle.setAttribute('class', 'mt-0');
+                newBodyTitle.textContent = key;
+                var newBodyText = document.createElement("p")
+                newBodyText.innerHTML = value[1];
+
+                var line = document.createElement("hr")
+                
+                newBody.appendChild(newBodyTitle);
+                newBody.appendChild(newBodyText);
+                
+                newMedia.appendChild(newBodyLink);
+                newMedia.appendChild(newBody);
+                
+                searchResults.appendChild(newMedia);
+                searchResults.appendChild(line);
+                
+              }
+
+            } else {
+              var noResults = document.createElement("p")
+              noResults.textContent = "We searched high and low, and we found nothing... its clearly because you were not specific enough.";
+              searchResults.appendChild(noResults);
+            }
+
+            $("#results").empty();
+            document.getElementById("results").appendChild(searchResults);
+          }, "json");
+
+        };
+
+        document.getElementById("search").onkeyup = load_results;
+
+      </script>
+
+    </div>
+  <div class="col">
+    <h5>Options</h5>
+      
+  </div>
+</div>
+
+</div>
+{% endblock content %}
