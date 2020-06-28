@@ -48,7 +48,7 @@ def check_login():
     
 # Set the route and accepted methods
 @main_page_module.route('/', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def index():
     #if check_login(): return redirect(url_for("main_page_module.login"))  
 
