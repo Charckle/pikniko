@@ -4,7 +4,7 @@ from flask import Blueprint, request, render_template, \
 
 #from app import connection, cursor
 # Import module forms
-from app.main_page_module.forms import LoginForm, RegisterForm, EntryForm, EditEntryForm, EditUserForm
+from app.main_page_module.forms import LoginForm, RegisterForm, EntryForm, EditEntryForm, EditUserForm, CalculateStuffForm
 
 
 #import os
@@ -47,25 +47,161 @@ def check_login():
 def index():
     #if check_login(): return redirect(url_for("main_page_module.login"))  
 
-    return render_template("main_page_module/index.html")
+    form = CalculateStuffForm(request.form)
+    
+    return render_template("main_page_module/index.html", form = form)
 
 @main_page_module.route('/plan/', methods=['POST'])
-@login_required
+#@login_required
 def plan_create():
-    key = request.form["key"]
-
-    banana = WSearch()
-    if key == "":
-        asterix = ""
-    else:
-        asterix = "*"
-    res = banana.index_search(key + asterix)
+    #ljudje
+    '''
+    peoplenum = request.form["peoplenum"]
+    vegiSlider = request.form["vegiSlider"]
+    childnum = request.form["childnum"]
+    vegiChild = request.form["vegiChild"]
     
-    #get IDs of the notes the user can access
-    user_notes = note_sql_get_all_active_of_user(session['user_id'])
-    results = {r[0]: [r[1], r[2]] for r in res if (int(r[0]) in user_notes)}
+    #meso
+    cevap = request.form["cevap"]
+    plesk = request.form["plesk"]
+    vratovina = request.form["vratovina"]
+    perutinicke = request.form["perutinicke"]
     
-    return jsonify(results)
+    #zelenjava
+    bucke = request.form["bucke"]
+    gobce = request.form["gobce"]
+    paprikas = request.form["paprikas"]
+    melancanno = request.form["melancanno"]
+    
+    #pijaca
+    pivicko = request.form["pivicko"]
+    sokec = request.form["sokec"]
+    ledek = request.form["ledek"]
+    '''
+    
+    form = CalculateStuffForm(request.form)
+    
+    # Verify the sign in form
+    if form.validate_on_submit():
+        peoplenum = form.peoplenum.data
+        vegiSlider = form.vegiSlider.data
+        childnum = form.childnum.data
+        vegiChild = form.vegiChild.data
+        #izracun ljudi in otrok mesojedcev
+        mesojedci = peoplenum - vegiSlider
+        otroci_mesa = childnum - vegiChild  
+        #skupno vsi ljudje
+        skupno_ljudje = peoplenum + childnum
+        
+        #meso
+        cevap = form.cevap.data
+        plesk = form.plesk.data
+        vratovina = form.vratovina.data
+        perutinicke = form.perutinicke.data
+        #
+        skupna_mozna_kolicina_mesa = cevap + plesk + vratovina + perutinicke
+        #        
+        cevap_proc = cevap * 100 / skupna_mozna_kolicina_mesa
+        plesk_proc = plesk * 100 / skupna_mozna_kolicina_mesa
+        vratovina_proc = vratovina * 100 / skupna_mozna_kolicina_mesa
+        perutinicke_proc = perutinicke * 100 / skupna_mozna_kolicina_mesa     
+        
+        #zelenjava
+        bucke = form.bucke.data
+        gobce = form.gobce.data
+        paprikas = form.paprikas.data
+        melancanno = form.melancanno.data
+        #
+        skupna_mozna_kolicina_zelenjave = bucke + gobce + paprikas + melancanno
+        #           
+        bucke_proc = bucke * 1 / skupna_mozna_kolicina_zelenjave
+        gobce_proc = gobce * 1 / skupna_mozna_kolicina_zelenjave
+        paprikas_proc = paprikas * 1 / skupna_mozna_kolicina_zelenjave
+        melancanno_proc = melancanno * 1 / skupna_mozna_kolicina_zelenjave
+        
+        #pijaca
+        pivicko = form.pivicko.data        
+        colica = form.sokec.data
+        sokec = form.sokec.data
+        skupna_mozna_kolicina_brezalko = colica + sokec
+        colica_proc = colica / skupna_mozna_kolicina_brezalko
+        sokec_proc = sokec / skupna_mozna_kolicina_brezalko
+        #
+        ledek = form.ledek.data
+        #
+        ledek_proc = ledek * 1 / 50
+        
+        #
+        
+        meso_odrasli_g = 200
+        meso_otroci_g = 100
+        
+        vegi_odrasli_g = 200
+        vegi_otroci_g = 100
+        
+        zelenjava_odrasli_g = 200
+        zelenjava_otroci_g = 100
+        
+        perutnicke_razmerje = 1.6
+        
+        kruh_odrasli_g = 100
+        kruh_otroci_g = 50
+        
+        cebula_odrasli_g = 25
+        cebula_otroci_g = 15
+        
+        pivo_ml = 1500
+        cola_odrasli_ml = 1200
+        cola_otroci_ml = 700
+        sok_odrasli_ml = 1200
+        sok_otroci_ml = 700
+        led_odrasli_g = 150
+        
+        #teza na kos
+        kruh_g = 50
+            
+        
+        #results
+        
+        #meso
+        skupno_cevap = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * cevap_proc
+        skupno_plesk = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * plesk_proc
+        skupno_vratovina = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * vratovina_proc
+        skupno_perutinicke = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * perutnicke_razmerje * perutinicke_proc
+        #vegi
+        skupno_vegi = ((vegiSlider * meso_odrasli_g) + (vegiChild * meso_otroci_g))
+        #zelenjava
+        skupno_bucke = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * bucke_proc
+        skupno_gobce = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * gobce_proc
+        skupno_paprikas = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * paprikas_proc
+        skupno_melancanno = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * melancanno_proc
+        #pivo
+        skupno_pivo = peoplenum * pivo_ml
+        skupno_pivo_veliko = int(skupno_pivo / 500) + (skupno_pivo % 500 > 0)
+        skupno_pivo_malo = int(skupno_pivo / 330) + (skupno_pivo % 330 > 0)
+        #brezalko
+        skupno_cola = ((peoplenum * cola_odrasli_ml) + (childnum * cola_otroci_ml)) * colica_proc
+        skupno_cola_literpol = int(skupno_cola / 1500) + (skupno_cola % 1500 > 0)        
+        skupno_sok = ((peoplenum * sok_odrasli_ml) + (childnum * sok_otroci_ml)) * sokec_proc
+        skupno_sok_liter = int(skupno_sok / 1000) + (skupno_sok % 1000 > 0)
+        #led
+        skupno_led_g = skupno_ljudje * led_odrasli_g * ledek_proc
+        #ostalo
+        skupno_cebula_g = (peoplenum * cebula_odrasli_g) + (childnum * cebula_otroci_g)
+        skupno_kruh_g = (peoplenum * kruh_odrasli_g) + (childnum * kruh_otroci_g)
+        skupno_kruh_kos = int(skupno_kruh_g / kruh_g) + (skupno_kruh_g % kruh_g > 0)        
+        
+        
+        print("banana")
+        #return jsonify(results)
+   
+    
+    
+    print("ne banana")
+    print(form.errors)
+    #results = {r[0]: [r[1], r[2]] for r in res if (int(r[0]) in user_notes)}
+    
+    #return jsonify(results)
 
 @main_page_module.route('/search/', methods=['GET'])
 @login_required
