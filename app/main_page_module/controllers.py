@@ -101,10 +101,10 @@ def plan_create():
         #
         skupna_mozna_kolicina_mesa = cevap + plesk + vratovina + perutinicke
         #        
-        cevap_proc = cevap * 100 / skupna_mozna_kolicina_mesa
-        plesk_proc = plesk * 100 / skupna_mozna_kolicina_mesa
-        vratovina_proc = vratovina * 100 / skupna_mozna_kolicina_mesa
-        perutinicke_proc = perutinicke * 100 / skupna_mozna_kolicina_mesa     
+        cevap_proc = cevap * 1 / skupna_mozna_kolicina_mesa
+        plesk_proc = plesk * 1 / skupna_mozna_kolicina_mesa
+        vratovina_proc = vratovina * 1 / skupna_mozna_kolicina_mesa
+        perutinicke_proc = perutinicke * 1 / skupna_mozna_kolicina_mesa     
         
         #zelenjava
         bucke = form.bucke.data
@@ -164,17 +164,17 @@ def plan_create():
         #results
         
         #meso
-        skupno_cevap = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * cevap_proc
-        skupno_plesk = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * plesk_proc
-        skupno_vratovina = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * vratovina_proc
-        skupno_perutinicke = ((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * perutnicke_razmerje * perutinicke_proc
+        skupno_cevap = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * cevap_proc)
+        skupno_plesk = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * plesk_proc)
+        skupno_vratovina = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * vratovina_proc)
+        skupno_perutinicke = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * perutnicke_razmerje * perutinicke_proc)
         #vegi
         skupno_vegi = ((vegiSlider * meso_odrasli_g) + (vegiChild * meso_otroci_g))
         #zelenjava
-        skupno_bucke = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * bucke_proc
-        skupno_gobce = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * gobce_proc
-        skupno_paprikas = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * paprikas_proc
-        skupno_melancanno = ((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * melancanno_proc
+        skupno_bucke = int(((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * bucke_proc)
+        skupno_gobce = int(((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * gobce_proc)
+        skupno_paprikas = int(((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * paprikas_proc)
+        skupno_melancanno = int(((peoplenum * zelenjava_odrasli_g) + (childnum * zelenjava_otroci_g)) * melancanno_proc)
         #pivo
         skupno_pivo = peoplenum * pivo_ml
         skupno_pivo_veliko = int(skupno_pivo / 500) + (skupno_pivo % 500 > 0)
@@ -191,14 +191,52 @@ def plan_create():
         skupno_kruh_g = (peoplenum * kruh_odrasli_g) + (childnum * kruh_otroci_g)
         skupno_kruh_kos = int(skupno_kruh_g / kruh_g) + (skupno_kruh_g % kruh_g > 0)        
         
+        osnovni_p = {"odrasli_m": ["Število odraslih - Meso", mesojedci],
+         "odrasli_v": ["Število odraslih - Vegi", vegiSlider],
+         "otroci_m": ["Število otrok - Meso", otroci_mesa],
+         "otroci_v": ["Število otrok - Vegi", vegiChild]
+         }
         
-        print("banana")
+        meso = {"cevap": ["Čevapčiči", skupno_cevap],
+         "plesk": ["Pleskavice", skupno_plesk],
+         "vrat": ["Vratovina", skupno_vratovina],
+         "perut": ["Perutničke", skupno_perutinicke]
+         }
+        
+        vegi = {
+         "vegi": ["Vegi odrasli", skupno_vegi]
+         }
+        
+        zelenjava = {"bucke": ["Bučke", skupno_bucke],
+         "gobe": ["Gobice", skupno_gobce],
+         "pap": ["Paprika", skupno_paprikas],
+         "melan": ["Melancani", skupno_melancanno]
+         }
+        
+        pivo = {"skup_pivo": ["Skupno Pivo ml", skupno_pivo],
+         "veliko_pivo": ["Velikega:", skupno_pivo_veliko],
+         "malo_pivo": ["Ali majhnega", skupno_pivo_malo]
+         }
+        
+        sokovi = {"skup_cola": ["Skupno Cola ml", skupno_cola],
+         "cola_literpol": ["Cola 1,5l", skupno_cola_literpol],
+         "skup_sok": ["Skupno Sok", skupno_sok],
+         "sok_liter": ["Sokl 1l", skupno_sok_liter]
+         }
+        
+        ostalo = {"led_g": ["Gramov Ledu", skupno_led_g],
+         "gram_veb": ["Gramov čebule", skupno_cebula_g],
+         "gram_kruh": ["Gramov kruha", skupno_kruh_g],
+         "kos_kruh": ["Kosov kruha", skupno_kruh_kos]
+        }
+        
+        return render_template("main_page_module/plan.html", osnovni_p=osnovni_p, meso=meso, vegi=vegi, zelenjava=zelenjava, pivo=pivo, sokovi=sokovi, ostalo=ostalo)
         #return jsonify(results)
    
     
+    flash('Som Tin Wong!', 'error')
     
-    print("ne banana")
-    print(form.errors)
+    return render_template("main_page_module/index.html")
     #results = {r[0]: [r[1], r[2]] for r in res if (int(r[0]) in user_notes)}
     
     #return jsonify(results)
