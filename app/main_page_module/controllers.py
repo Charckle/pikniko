@@ -104,7 +104,7 @@ def plan_create():
         cevap_proc = cevap * 1 / skupna_mozna_kolicina_mesa
         plesk_proc = plesk * 1 / skupna_mozna_kolicina_mesa
         vratovina_proc = vratovina * 1 / skupna_mozna_kolicina_mesa
-        perutinicke_proc = perutinicke * 1 / skupna_mozna_kolicina_mesa     
+        perutinicke_proc = perutinicke * 1 / skupna_mozna_kolicina_mesa   
         
         #zelenjava
         bucke = form.bucke.data
@@ -168,6 +168,9 @@ def plan_create():
         skupno_plesk = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * plesk_proc)
         skupno_vratovina = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * vratovina_proc)
         skupno_perutinicke = int(((mesojedci * meso_odrasli_g) + (otroci_mesa * meso_otroci_g)) * perutnicke_razmerje * perutinicke_proc)
+
+        skupna_meso = skupno_cevap + skupno_plesk + skupno_vratovina + skupno_perutinicke
+        
         #vegi
         skupno_vegi = ((vegiSlider * meso_odrasli_g) + (vegiChild * meso_otroci_g))
         #zelenjava
@@ -189,7 +192,8 @@ def plan_create():
         #ostalo
         skupno_cebula_g = (peoplenum * cebula_odrasli_g) + (childnum * cebula_otroci_g)
         skupno_kruh_g = (peoplenum * kruh_odrasli_g) + (childnum * kruh_otroci_g)
-        skupno_kruh_kos = int(skupno_kruh_g / kruh_g) + (skupno_kruh_g % kruh_g > 0)        
+        skupno_kruh_kos = int(skupno_kruh_g / kruh_g) + (skupno_kruh_g % kruh_g > 0)    
+        skupno_oglje = skupna_meso + skupno_vegi
         
         osnovni_p = {"odrasli_m": ["Število odraslih - Meso", mesojedci],
          "odrasli_v": ["Število odraslih - Vegi", vegiSlider],
@@ -214,7 +218,7 @@ def plan_create():
          }
         
         pivo = {"skup_pivo": ["Skupno Pivo ml", skupno_pivo],
-         "veliko_pivo": ["Velikega:", skupno_pivo_veliko],
+         "veliko_pivo": ["Velikega", skupno_pivo_veliko],
          "malo_pivo": ["Ali majhnega", skupno_pivo_malo]
          }
         
@@ -227,7 +231,8 @@ def plan_create():
         ostalo = {"led_g": ["Gramov Ledu", skupno_led_g],
          "gram_veb": ["Gramov čebule", skupno_cebula_g],
          "gram_kruh": ["Gramov kruha", skupno_kruh_g],
-         "kos_kruh": ["Kosov kruha", skupno_kruh_kos]
+         "kos_kruh": ["Kosov kruha", skupno_kruh_kos],
+         "skupno_oglje": ["Gramov oglja", skupno_oglje]
         }
         
         return render_template("main_page_module/plan.html", osnovni_p=osnovni_p, meso=meso, vegi=vegi, zelenjava=zelenjava, pivo=pivo, sokovi=sokovi, ostalo=ostalo)
