@@ -1,0 +1,29 @@
+
+
+default: https://www.flaticon.com/free-icon/map_854929?term=location&page=2&position=75
+Lake: https://www.flaticon.com/free-icon/lake_2897223?term=lake&page=1&position=88
+waterfall: https://www.flaticon.com/free-icon/waterfall_2802878?term=waterfall&page=1&position=70
+cave: https://www.flaticon.com/free-icon/cave_2599842?term=cave&page=1&position=45
+hill: https://www.flaticon.com/free-icon/hill_721124?term=hill&page=2&position=33
+mountain: https://www.flaticon.com/free-icon/mountain_619131?term=mountain&page=1&position=95
+https://www.flaticon.com/free-icon/mountains_2213242?term=river&page=2&position=66
+river: https://www.flaticon.com/free-icon/river_721076?term=river&page=4&position=32
+beach: https://www.flaticon.com/free-icon/beach_3112930?term=beach&page=1&position=13
+park: https://www.flaticon.com/free-icon/park_896059?term=park&page=1&position=23
+natural wonder: https://www.flaticon.com/free-icon/landscape_3069318?term=nature%20landscape&page=2&position=24
+museum: https://www.flaticon.com/free-icon/museum_2620294?term=museum&page=3&position=93
+bridbe: https://www.flaticon.com/free-icon/bridge_1043484?term=bridge&page=6&position=55
+old building: https://www.flaticon.com/free-icon/museum_2714770?term=museum&page=1&position=96
+important building: https://www.flaticon.com/free-icon/cathedral_804326?term=church&page=2&position=69
+war: https://www.flaticon.com/free-icon/swords_861908?term=war&page=1&position=16
+monument: https://www.flaticon.com/free-icon/obelisk_553968?term=monument&page=7&position=62
+church: https://www.flaticon.com/free-icon/church_667683?term=church&page=6&position=75
+castle: https://www.flaticon.com/free-icon/castle_1021360?term=castle&page=1&position=38
+fortification: https://www.flaticon.com/free-icon/tower_1043549?term=castle&page=1&position=71
+ruin: https://www.flaticon.com/free-icon/columns_499276?term=ruin&page=1&position=7
+https://www.flaticon.com/free-icon/ruins_307789?term=ruin&page=2&position=54
+caffe: https://www.flaticon.com/free-icon/map_1079115?term=coffee%20location&page=1&position=4
+icecream shop: https://www.flaticon.com/free-icon/placeholder_1012456?term=restaurant%20location&page=3&position=73
+restarurant: https://www.flaticon.com/free-icon/food_333395?term=restaurant%20location&page=4&position=34
+attraction: https://www.flaticon.com/free-icon/ferris-wheel_3055204?term=attraction&page=2&position=22
+adrenaline: https://www.flaticon.com/free-icon/parachute_2513226?term=adrenaline&page=1&position=16

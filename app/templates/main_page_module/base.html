@@ -29,30 +29,8 @@
                     <li class="nav-item {% block nav_index %}{% endblock nav_index %}">
                         <a class="nav-link" href="{{ url_for('main_page_module.index') }}">Home </a>
                     </li>
-                    <li class="nav-item {% block nav_search %}{% endblock nav_search %}">
-                        <a class="nav-link" href="{{ url_for('main_page_module.search') }}">Search </a>
-                    </li>
-                    <li class="nav-item {% block nav_new_entry %}{% endblock nav_new_entry %}">
-                        <a class="nav-link" href="{{ url_for('main_page_module.new_entry') }}">New Note </a>
-                    </li>
-                    <li class="nav-item {% block nav_all_entry %}{% endblock nav_all_entry %}">
-                        <a class="nav-link" href="{{ url_for('main_page_module.all_entry') }}">View All Notes </a>
-                    </li>
-                    <li class="nav-item {% block nav_all_users %}{% endblock nav_all_users %}">
-                        <a class="nav-link" href="{{ url_for('main_page_module.all_users') }}">Users </a>
-                    </li>
+
                     
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    {% if session['user_id'] %}
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main_page_module.logout') }}">Logout </a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main_page_module.login') }}">Login </a>
-                        </li>
-                    {% endif %}
                 </ul>
                 
             </div>

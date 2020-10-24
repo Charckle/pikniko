@@ -1,7 +1,6 @@
-*.sql
-*.sqlite
 __pycache__/
 *.pyc
 *.exe
 database.db
 to-do.txt
+.vs

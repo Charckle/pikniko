@@ -1,8 +1,6 @@
-FROM python:3
+FROM python:3.7.5
 
-
-RUN apt-get update -y && \
-    apt-get install -y python-pip python-dev
+EXPOSE 8000
 
 COPY ./requirements.txt /app/requirements.txt
 

@@ -41,7 +41,8 @@
       <h1>Piknik?!</h1>
       <hr>
       <div class="container">
-        <form>
+        <form method="POST" action="{{ url_for('main_page_module.plan_create') }}" accept-charset="UTF-8" role="form">
+        {{ form.csrf_token }}
           <div class="form-group">
               <script>
                   function updatePeople(slideAmount) {
@@ -57,8 +58,8 @@
                       vegiSlider.setAttribute('value', 0);
                   }
               </script>
-            <label for="formGroupExampleInput">Število Oseb</label> - <span class="badge badge-danger" id="stoseb">10</span>
-            <input type="range" class="form-control-range" id="formControlRange" min="1" max="50" value="10" oninput="updatePeople(this.value)">
+            <label for="peoplenum">Število Odraslih</label> - <span class="badge badge-danger" id="stoseb">10</span>
+            <input type="range" class="form-control-range" id="peoplenum" name="peoplenum" min="1" max="50" value="10" oninput="updatePeople(this.value)">
           </div>
           <div class="form-group">
               <script>
@@ -68,7 +69,37 @@
                   }
               </script>
             <label for="vegiSlider">Od tega Vegetarjancev/Veganov</label> - <span class="badge badge-success" id="stveg">0</span>
-            <input type="range" class="form-control-range" id="vegiSlider" min="1" max="10" value="0" oninput="updateVeg(this.value)">
+            <input type="range" class="form-control-range" id="vegiSlider" name="vegiSlider" min="0" max="10" value="0" oninput="updateVeg(this.value)">
+          </div>
+          <hr>
+          
+          <div class="form-group">
+              <script>
+                  function updateChild(slideAmount) {
+                      var stchild = document.getElementById("stchild");
+                      stchild.innerHTML = slideAmount;
+
+                      //doloci vegije
+                      var stvegchild = document.getElementById("stvegchild");
+                      stvegchild.innerHTML = "0";
+                      var vegiChild = document.getElementById("vegiChild");
+                      vegiChild.setAttribute('min', '0');
+                      vegiChild.setAttribute('max', slideAmount);
+                      vegiChild.setAttribute('value', 0);
+                  }
+              </script>
+            <label for="childnum">Število Otrok</label> - <span class="badge badge-primary" id="stchild">0</span>
+            <input type="range" class="form-control-range" id="childnum" name="childnum" min="0" max="30" value="0" oninput="updateChild(this.value)">
+          </div>
+          <div class="form-group">
+              <script>
+                  function updateVegChild(slideAmount) {
+                      var stvegchild = document.getElementById("stvegchild");
+                      stvegchild.innerHTML = slideAmount;
+                  }
+              </script>
+            <label for="vegiChild">Od tega Vegetarjancev/Veganov</label> - <span class="badge badge-success" id="stvegchild">0</span>
+            <input type="range" class="form-control-range" id="vegiChild" name="vegiChild" min="0" max="30" value="0" oninput="updateVegChild(this.value)">
           </div>
           <hr>
           
@@ -76,7 +107,7 @@
             <div class="card-header">
               Meso
             </div>
-            <div class="card-body">
+            <div class="card-body  text-dark bg-light">
                 <script>
                     function updatecevap(slideAmount) {
                         var cevapbag = document.getElementById("cevapbag");
@@ -151,24 +182,24 @@
                     }
                 </script>
               <div class="form-group">
-                <label for="cevap">Čevapčiči</label> - <span class="badge badge-pill badge-light" id="cevapbag">Veliko</span>
-                <input type="range" class="form-control-range" id="cevap" min="1" max="50" value="50" oninput="updatecevap(this.value)">
+                <label for="cevap">Čevapčiči</label> - <span class="badge badge-pill badge-danger" id="cevapbag">Veliko</span>
+                <input type="range" class="form-control-range" id="cevap" name="cevap" min="0" max="50" value="50" oninput="updatecevap(this.value)">
               </div>
               <div class="form-group">
-                <label for="formGroupExampleInput2">Pleskavice</label> - <span class="badge badge-pill badge-light" id="pleskbag">Malo</span>
-                <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="10" oninput="updateplesk(this.value)">
+                <label for="plesk">Pleskavice</label> - <span class="badge badge-pill badge-danger" id="pleskbag">Malo</span>
+                <input type="range" class="form-control-range" id="plesk" name="plesk" min="0" max="50" value="10" oninput="updateplesk(this.value)">
               </div>
               <div class="form-group">
-                <label for="formGroupExampleInput2">Vratovina</label> - <span class="badge badge-pill badge-light" id="vratbag">Nekaj</span>
-                <input type="range" class="form-control-range" id="vratovina" min="0" max="50" value="20" oninput="updatevrat(this.value)">
+                <label for="vratovina">Vratovina</label> - <span class="badge badge-pill badge-danger" id="vratbag">Nekaj</span>
+                <input type="range" class="form-control-range" id="vratovina" name="vratovina" min="0" max="50" value="20" oninput="updatevrat(this.value)">
               </div>
               <div class="form-group">
-                <label for="formGroupExampleInput2">Perutničke</label> - <span class="badge badge-pill badge-light" id="perutbag">Veliko</span>
-                <input type="range" class="form-control-range" id="vratovina" min="0" max="50" value="50" oninput="updateperut(this.value)">
+                <label for="perutinicke">Perutničke</label> - <span class="badge badge-pill badge-warning" id="perutbag">Veliko</span>
+                <input type="range" class="form-control-range" id="perutinicke" name="perutinicke" min="0" max="50" value="50" oninput="updateperut(this.value)">
               </div>
             </div>
           </div>
-          <div class="card border-success mb-3">
+          <div class="card  text-white bg-success mb-3">
               <div class="card-header">
                 Zelenjava
               </div>
@@ -247,29 +278,29 @@
                   }
               </script>
 
-              <div class="card-body">
+              <div class="card-body text-dark bg-light">
                 <div class="form-group">
-                  <label for="formGroupExampleInput2">Bučke</label> - <span class="badge badge-pill badge-success" id="bucbag">Dosti</span>
-                  <input type="range" class="form-control-range" id="formControlRange" min="1" max="50" value="50" oninput="updatebucke(this.value)">
+                  <label for="bucke">Bučke</label> - <span class="badge badge-pill badge-success" id="bucbag">Dosti</span>
+                  <input type="range" class="form-control-range" id="bucke" name="bucke" min="0" max="50" value="50" oninput="updatebucke(this.value)">
                 </div>
                 <div class="form-group">
-                  <label for="formGroupExampleInput2">Gobice</label> - <span class="badge badge-pill badge-success" id="gobbag">Malo</span>
-                  <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="9" oninput="updategobe(this.value)">
+                  <label for="gobce">Gobice</label> - <span class="badge badge-pill badge-success" id="gobbag">Malo</span>
+                  <input type="range" class="form-control-range" id="gobce" name="gobce" min="0" max="50" value="9" oninput="updategobe(this.value)">
                 </div>
                 <div class="form-group">
-                  <label for="formGroupExampleInput2">Paprika</label> - <span class="badge badge-pill badge-danger" id="paprikbag">Nekaj</span>
-                  <input type="range" class="form-control-range" id="vratovina" min="0" max="50" value="20" oninput="updatepaprik(this.value)">
+                  <label for="paprikas">Paprika</label> - <span class="badge badge-pill badge-danger" id="paprikbag">Nekaj</span>
+                  <input type="range" class="form-control-range" id="paprikas" name="paprikas" min="0" max="50" value="20" oninput="updatepaprik(this.value)">
                 </div>
                 <div class="form-group">
-                  <label for="formGroupExampleInput2">Melancani</label> - <span class="badge badge-pill badge-primary" id="melanbag">Nič</span>
-                  <input type="range" class="form-control-range" id="vratovina" min="0" max="50" value="0" oninput="updatepmelan(this.value)">
+                  <label for="melancanno">Melancani</label> - <span class="badge badge-pill badge-primary" id="melanbag">Nič</span>
+                  <input type="range" class="form-control-range" id="melancanno" name="melancanno" min="0" max="50" value="0" oninput="updatepmelan(this.value)">
                 </div>
               </div>
             </div>
 
-          <div class="card border-info mb-3">
+          <div class="card  text-white bg-warning mb-3">
             <div class="card-header">
-              Pijača
+              Pivo
             </div>
 
             <script>
@@ -291,6 +322,24 @@
                     pivbag.innerHTML = stanje;
                 }
 
+            </script>
+
+            <div class="card-body text-dark bg-light">
+              <div class="form-group">
+                <label for="pivicko">Pivo</label> - <span class="badge badge-pill badge-warning" id="pivbag">Veliko</span>
+                <input type="range" class="form-control-range" id="pivicko" name="pivicko" min="0" max="50" value="50" oninput="updatepivo(this.value)">
+              </div>
+            </div>
+          </div>
+          <hr>
+          
+          <div class="card text-white bg-dark mb-3">
+            <div class="card-header">
+              Sokovi
+            </div>
+
+            <script>
+
                 function updatesok(slideAmount) {
                     var sokbag = document.getElementById("sokbag");
 
@@ -308,6 +357,46 @@
 
                     sokbag.innerHTML = stanje;
                 }
+                
+                function updatecola(slideAmount) {
+                    var colabag = document.getElementById("colabag");
+
+                    if (slideAmount == 0) {
+                      stanje = "Nič";
+                    } else if (slideAmount < 10) {
+                      stanje = "Malo";
+                    }  else if (slideAmount < 25) {
+                      stanje = "Nekaj";
+                    } else if (slideAmount < 40) {
+                      stanje = "Zmerno";
+                    } else {
+                      stanje = "Veliko";
+                    }
+
+                    colabag.innerHTML = stanje;
+                }
+
+            </script>
+
+            <div class="card-body text-dark bg-light">
+            <div class="form-group">
+                <label for="sokec">Cola</label> - <span class="badge badge-pill badge-dark" id="colabag">Nekaj</span>
+                <input type="range" class="form-control-range" id="colica" name="colica" min="0" max="50" value="40" oninput="updatecola(this.value)">
+              </div>
+              <div class="form-group">
+                <label for="sokec">Sokovi</label> - <span class="badge badge-pill badge-danger" id="sokbag">Nekaj</span>
+                <input type="range" class="form-control-range" id="sokec" name="sokec" min="0" max="50" value="40" oninput="updatesok(this.value)">
+              </div>
+            </div>
+          </div>
+          <hr>
+          
+          <div class="card  text-white bg-info mb-3">
+            <div class="card-header">
+              Led
+            </div>
+
+            <script>
 
                 function updateled(slideAmount) {
                     var ledbag = document.getElementById("ledbag");
@@ -328,22 +417,15 @@
                 }
             </script>
 
-            <div class="card-body">
+            <div class="card-body text-dark bg-light">
               <div class="form-group">
-                <label for="formGroupExampleInput2">Pivo</label> - <span class="badge badge-pill badge-warning" id="pivbag">Veliko</span>
-                <input type="range" class="form-control-range" id="formControlRange" min="1" max="50" value="50" oninput="updatepivo(this.value)">
-              </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput2">Sokovi</label> - <span class="badge badge-pill badge-info" id="sokbag">Nekaj</span>
-                <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="40" oninput="updatesok(this.value)">
-              </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput2">Led</label> - <span class="badge badge-pill badge-info" id="ledbag">Malo</span>
-                <input type="range" class="form-control-range" id="formControlRange" min="0" max="50" value="9" oninput="updateled(this.value)">
+                <label for="ledek">Led</label> - <span class="badge badge-pill badge-info" id="ledbag">Malo</span>
+                <input type="range" class="form-control-range" id="ledek" name="ledek" min="0" max="50" value="9" oninput="updateled(this.value)">
               </div>
             </div>
           </div>
           <hr>
+          
           <div class="form-group">
             <input type="submit" class="form-control-range btn btn-success" value="Izračunaj!" style="position: fixed; bottom: 4px; right: 0px; left: 0px;">
           </div>
@@ -417,7 +499,7 @@
 
     </div>
   <div class="col">
-    <h5>Options</h5>
+    
       
   </div>
 </div>
