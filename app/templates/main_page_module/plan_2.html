@@ -67,7 +67,7 @@
 
           <div class="row row_mb_100 text-left">
               <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
+                  <img src="{{ url_for('static', filename='images/background/people_plan.jpg') }}" alt="">
               </div>
 
               <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
@@ -179,7 +179,7 @@
 
 
               <div class="col-md-8 col-md-offset-4 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
+                  <img src="{{ url_for('static', filename='images/background/meso_plan.jpg') }}" alt="">
               </div>
               <!-- col end -->
 
@@ -195,7 +195,7 @@
 
           <div class="row row_mb_100 text-left">
               <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
+                  <img src="{{ url_for('static', filename='images/background/vege_plan.jpg') }}" alt="">
               </div>
 
               <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
@@ -298,7 +298,7 @@
 
 
               <div class="col-md-8 col-md-offset-4 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
+                  <img src="{{ url_for('static', filename='images/background/beer_plan.jpg') }}" alt="">
               </div>
               <!-- col end -->
 
@@ -314,7 +314,7 @@
 
           <div class="row row_mb_100 text-left">
               <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
+                  <img src="{{ url_for('static', filename='images/background/beer_plan.jpg') }}" alt="">
               </div>
 
               <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
@@ -369,71 +369,11 @@
           </div>
           <!-- row end -->
 
-          <div class="row">
 
-              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posl lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
-
-                  <!-- Over -->
-                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
-                  
-                  <!-- menu -->
-                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
-                      
-                      <h2 class="lec_rust">Pivo</h2>
-                      
-                      <div class="lec_parallax_menu_mini">
-                          <div class="lec_parallax_menu_mini_title lec_parallax_menu_mini_feaut">
-                              <h3>{{ pivo["skup_pivo"][0] }}</h3>
-                              <div class="lec_menu_spacer"></div>
-                              <div class="lec_parallax_menu_mini_price">{{ pivo["skup_pivo"][1] }} l</div>
-                          </div>      
-                      </div>
-
-                      <div class="lec_parallax_menu_mini">
-                          <div class="lec_parallax_menu_mini_title clearfix">
-                              <h3>{{ pivo["veliko_pivo"][0] }}</h3>
-                              <div class="lec_menu_spacer"></div>
-                              <div class="lec_parallax_menu_mini_price">{{ pivo["veliko_pivo"][1] }} x 0,5 l</div>
-                          </div>      
-                      </div>
-
-                      <div class="lec_parallax_menu_mini">
-                          <div class="lec_parallax_menu_mini_title clearfix">
-                              <h3>{{ pivo["malo_pivo"][0] }}</h3>
-                              <div class="lec_menu_spacer"></div>
-                              <div class="lec_parallax_menu_mini_price">{{ pivo["malo_pivo"][1] }}  x 0,33 l</div>
-                          </div>      
-                      </div>
-                      
-                      
-                  </div>
-                  <!-- menu end -->
-
-
-
-              </div>
-              <!-- col end -->
-
-
-
-              <div class="col-md-8 col-md-offset-4 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
-              </div>
-              <!-- col end -->
-
-          </div>
-          <!-- row end -->
-
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
 
           <div class="row row_mb_100 text-left">
               <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
-                  <img src="http://placehold.it/1400x800" alt="">
+                  <img src="{{ url_for('static', filename='images/background/onions_plan.jpg') }}" alt="">
               </div>
 
               <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
