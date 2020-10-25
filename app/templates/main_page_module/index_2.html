@@ -1,0 +1,642 @@
+﻿{% extends "main_page_module/base_2.html" %}
+
+{% block extraheader %}
+{% endblock extraheader  %}
+
+{% block nav_index %}active{% endblock nav_index %}
+
+
+{% block flashes %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div>
+        {% for category, message in messages %}
+          {% if category == "error" %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% else %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock flashes %}
+
+
+{% block content%}
+    
+
+
+    <!-- Slider -->
+    <div class="lec_slider lec_image_bck lec_fixed lec_wht_txt" data-stellar-background-ratio="0.3" data-image="{{ url_for('static', filename='images/background/front.jpg') }}">
+        <div class="lec_slider_firefly" data-total="30" data-min="1" data-max="3"></div>
+
+
+        <!-- Over -->
+        <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+        
+
+        <div class="container">
+
+
+            <!-- Slider Texts -->
+            <div class="lec_slide_txt lec_slide_center_middle text-center">
+                <div class="lec_rust lec_slide_title">PIKNIK?</div>
+                <div class="lec_slide_subtitle">Izberi, izračunaj<br>Nabavi</div>
+            </div>
+            <!-- Slider Texts End -->
+        
+        </div>
+        <!-- container end -->
+
+        <!-- Slide Down -->
+        <a class="lec_scroll_down lec_go" href="#lec_content">
+            <b></b>
+            <i class="ti ti-angle-double-down"></i>
+        </a>
+
+
+    </div>
+    <!-- Slider End -->
+
+
+    <!-- Content -->
+    <section id="lec_content" class="lec_content">
+    <form method="POST" action="{{ url_for('main_page_module.plan_create') }}" accept-charset="UTF-8" role="form">
+        {{ form.csrf_token }}
+
+    <!-- section -->
+    <section class="lec_section lec_image_bck">
+            
+        <div class="row lec_auto_height">
+            <div class="col-md-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/people.jpg') }}">
+            </div>
+
+            <div class="col-md-6">
+                <div class="lec_simple_block">
+                        <h2 class="lec_rust">POVABLJENI</h2>
+                                
+                        <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                            <div class="lec_parallax_menu_mini_title clearfix">
+                                <h3>ŠTEVILO ODRASLIH</h3>
+                                <div class="lec_menu_spacer"></div>
+                                <div class="lec_parallax_menu_mini_price"><span class="badge badge-danger" id="stoseb">10</span></div>
+                            </div>
+                            <script>
+                                function updatePeople(slideAmount) {
+                                    var peopleAtPiknik = document.getElementById("stoseb");
+                                    peopleAtPiknik.innerHTML = slideAmount;
+                
+                                    //doloci vegije
+                                    var vegiAtPiknik = document.getElementById("stveg");
+                                    vegiAtPiknik.innerHTML = "0";
+                                    var vegiSlider = document.getElementById("vegiSlider");
+                                    vegiSlider.setAttribute('min', '0');
+                                    vegiSlider.setAttribute('max', slideAmount);
+                                    vegiSlider.setAttribute('value', 0);
+                                }
+                            </script>
+                            <p>(Feeds 1) 4oz Pork, 4oz Brisket, Choice of 2 Sides</p>
+                            <p><input type="range" class="form-control-range" id="peoplenum" name="peoplenum" min="1" max="50" value="10" oninput="updatePeople(this.value)"></p>
+                        </div>
+
+                        <div class="lec_parallax_menu_mini">
+                            <div class="lec_parallax_menu_mini_title clearfix">
+                                <h3>Od tega Vegetarjancev/Veganov</h3>
+                                <div class="lec_menu_spacer"></div>
+                                <div class="lec_parallax_menu_mini_price"><span class="badge badge-success" id="stveg">0</span></div>
+                            </div>
+                            <script>
+                                function updateVeg(slideAmount) {
+                                    var peopleAtPiknik = document.getElementById("stveg");
+                                    peopleAtPiknik.innerHTML = slideAmount;
+                                }
+                            </script>
+                            <p>(Feeds 2-3) 4 Bones, 6oz Pork, 6oz Brisket. Choice of 3 sides</p>
+                            <p><input type="range" class="form-control-range" id="vegiSlider" name="vegiSlider" min="0" max="10" value="0" oninput="updateVeg(this.value)"></p>
+                        </div> 
+
+                        <div class="lec_parallax_menu_mini">
+                            <div class="lec_parallax_menu_mini_title clearfix">
+                                <h3>Število Otrok</h3>
+                                <div class="lec_menu_spacer"></div>
+                                <div class="lec_parallax_menu_mini_price"><span class="badge badge-primary" id="stchild">0</span></div>
+                            </div>
+                            <script>
+                                function updateChild(slideAmount) {
+                                    var stchild = document.getElementById("stchild");
+                                    stchild.innerHTML = slideAmount;
+
+                                    //doloci vegije
+                                    var stvegchild = document.getElementById("stvegchild");
+                                    stvegchild.innerHTML = "0";
+                                    var vegiChild = document.getElementById("vegiChild");
+                                    vegiChild.setAttribute('min', '0');
+                                    vegiChild.setAttribute('max', slideAmount);
+                                    vegiChild.setAttribute('value', 0);
+                                }
+                            </script>
+                            <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                            <p><input type="range" class="form-control-range" id="childnum" name="childnum" min="0" max="30" value="0" oninput="updateChild(this.value)"></p>
+                        </div>
+
+                        <div class="lec_parallax_menu_mini">
+                            <div class="lec_parallax_menu_mini_title clearfix">
+                                <h3>Od tega Vegetarjancev/Veganov</h3>
+                                <div class="lec_menu_spacer"></div>
+                                <div class="lec_parallax_menu_mini_price"><span class="badge badge-success" id="stvegchild">0</span></div>
+                            </div>
+                            <script>
+                                function updateVegChild(slideAmount) {
+                                    var stvegchild = document.getElementById("stvegchild");
+                                    stvegchild.innerHTML = slideAmount;
+                                }
+                            </script>
+                            <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                            <p><input type="range" class="form-control-range" id="vegiChild" name="vegiChild" min="0" max="30" value="0" oninput="updateVegChild(this.value)"></p>
+                        </div>
+                </div>
+                                                                
+            </div>
+
+        </div>
+
+                
+        </section>
+        <!-- section end -->
+
+        <!-- section -->
+        <script>
+            function updatecevap(slideAmount) {
+                var cevapbag = document.getElementById("cevapbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                cevapbag.innerHTML = stanje;
+            }
+
+            function updateplesk(slideAmount) {
+                var pleskbag = document.getElementById("pleskbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                pleskbag.innerHTML = stanje;
+            }
+
+            function updatevrat(slideAmount) {
+                var vratbag = document.getElementById("vratbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                vratbag.innerHTML = stanje;
+            }
+
+            function updateperut(slideAmount) {
+                var perutbag = document.getElementById("perutbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                perutbag.innerHTML = stanje;
+            }
+        </script>
+        <section class="lec_section lec_image_bck">
+                
+                <div class="row lec_auto_height">
+                    
+                    <div class="col-md-6 col-md-push-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/meso.jpg') }}">
+                    </div>
+
+                    <div class="col-md-6 col-md-pull-6">
+                        <div class="lec_simple_block">
+                            <h2 class="lec_rust">Mesnina</h2>
+                            <h3 class="lec_gold_subtitle">MMM-MESO</h3> 
+                                
+                            <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Čevapčiči</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-danger" id="cevapbag">Veliko</span></div>
+                                </div>
+                                <p>(Feeds 1) 4oz Pork, 4oz Brisket, Choice of 2 Sides</p>
+                                <p><input type="range" class="form-control-range" id="cevap" name="cevap" min="0" max="50" value="50" oninput="updatecevap(this.value)"></p>
+                            </div>
+    
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Pleskavice</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-danger" id="pleskbag">Malo</span></div>
+                                </div>
+                                
+                                <p>(Feeds 2-3) 4 Bones, 6oz Pork, 6oz Brisket. Choice of 3 sides</p>
+                                <p><input type="range" class="form-control-range" id="plesk" name="plesk" min="0" max="50" value="10" oninput="updateplesk(this.value)"></p>
+                            </div> 
+    
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Vratovina</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-danger" id="vratbag">Nekaj</span></div>
+                                </div>
+                                <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                <p><input type="range" class="form-control-range" id="vratovina" name="vratovina" min="0" max="50" value="20" oninput="updatevrat(this.value)"></p>
+                            </div>
+
+                            <div class="lec_parallax_menu_mini">
+                                    <div class="lec_parallax_menu_mini_title clearfix">
+                                        <h3>Perutničke</h3>
+                                        <div class="lec_menu_spacer"></div>
+                                        <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-warning" id="perutbag">Veliko</span></div>
+                                    </div>
+                                    <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                    <p><input type="range" class="form-control-range" id="perutinicke" name="perutinicke" min="0" max="50" value="50" oninput="updateperut(this.value)"></p>
+                                </div>
+                        </div>
+                                                                        
+                    </div>
+
+                    
+
+                </div>
+
+                
+        </section>
+        <!-- section end -->
+        
+        <script>
+            function updatebucke(slideAmount) {
+                var bucbag = document.getElementById("bucbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                bucbag.innerHTML = stanje;
+            }
+
+            function updategobe(slideAmount) {
+                var gobbag = document.getElementById("gobbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                gobbag.innerHTML = stanje;
+            }
+
+            function updatepaprik(slideAmount) {
+                var paprikbag = document.getElementById("paprikbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                paprikbag.innerHTML = stanje;
+            }
+
+            function updatepmelan(slideAmount) {
+                var melanbag = document.getElementById("melanbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                melanbag.innerHTML = stanje;
+            }
+        </script>
+        <!-- section -->
+        <section class="lec_section lec_image_bck">
+                
+                <div class="row lec_auto_height">
+                    <div class="col-md-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/vege.jpg') }}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="lec_simple_block">
+                            <h2 class="lec_rust">Zelenjava</h2>
+                            <h3 class="lec_gold_subtitle">Vitamini</h3> 
+                                
+                            <div class="lec_parallax_menu_mini ">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Bučke</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-success" id="bucbag">Dosti</span></div>
+                                </div>
+                                <p>(Feeds 1) 4oz Pork, 4oz Brisket, Choice of 2 Sides</p>
+                                <p><input type="range" class="form-control-range" id="bucke" name="bucke" min="0" max="50" value="50" oninput="updatebucke(this.value)"></p>
+                            </div>
+    
+                            <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Gobice</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-success" id="gobbag">Malo</span></div>
+                                </div>
+                                
+                                <p>(Feeds 2-3) 4 Bones, 6oz Pork, 6oz Brisket. Choice of 3 sides</p>
+                                <p><input type="range" class="form-control-range" id="gobce" name="gobce" min="0" max="50" value="9" oninput="updategobe(this.value)"></p>
+                            </div> 
+    
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Paprika</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-danger" id="paprikbag">Nekaj</span></div>
+                                </div>
+                                <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                <p><input type="range" class="form-control-range" id="paprikas" name="paprikas" min="0" max="50" value="20" oninput="updatepaprik(this.value)"></p>
+                            </div>
+
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Melancani</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-primary" id="melanbag">Nič</span></div>
+                                </div>
+                                <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                <p><input type="range" class="form-control-range" id="melancanno" name="melancanno" min="0" max="50" value="0" oninput="updatepmelan(this.value)"></p>
+                            </div>
+                        </div>
+                                                                        
+                    </div>
+
+                </div>
+
+                
+        </section>
+        <!-- section end -->
+        <script>
+            function updatepivo(slideAmount) {
+                var pivbag = document.getElementById("pivbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                pivbag.innerHTML = stanje;
+            }
+
+            function updatesok(slideAmount) {
+                var sokbag = document.getElementById("sokbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                sokbag.innerHTML = stanje;
+            }
+            
+            function updatecola(slideAmount) {
+                var colabag = document.getElementById("colabag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 40) {
+                    stanje = "Zmerno";
+                } else {
+                    stanje = "Veliko";
+                }
+
+                colabag.innerHTML = stanje;
+            }
+
+            function updateled(slideAmount) {
+                var ledbag = document.getElementById("ledbag");
+
+                if (slideAmount == 0) {
+                    stanje = "Nič";
+                } else if (slideAmount < 10) {
+                    stanje = "Malo";
+                }  else if (slideAmount < 25) {
+                    stanje = "Nekaj";
+                } else if (slideAmount < 35) {
+                    stanje = "Vsaka pijača ima led";
+                } else {
+                    stanje = "Bolj led kot pijača";
+                }
+
+                ledbag.innerHTML = stanje;
+            }
+
+        </script>
+        <section class="lec_section lec_image_bck">
+                
+                <div class="row lec_auto_height">
+                    
+                    <div class="col-md-6 col-md-push-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/drinks.jpg') }}">
+                    </div>
+
+                    <div class="col-md-6 col-md-pull-6">
+                        <div class="lec_simple_block">
+                            <h2 class="lec_rust">Napitki</h2>
+                            <h3 class="lec_gold_subtitle">GLU-GLU-BRR</h3> 
+                                
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Pivo</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-warning" id="pivbag">Veliko</span></div>
+                                </div>
+                                <p>(Feeds 1) 4oz Pork, 4oz Brisket, Choice of 2 Sides</p>
+                                <p><input type="range" class="form-control-range" id="pivicko" name="pivicko" min="0" max="50" value="50" oninput="updatepivo(this.value)"></p>
+                            </div>
+    
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Cola</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-dark" id="colabag">Nekaj</span></div>
+                                </div>
+                                
+                                <p>(Feeds 2-3) 4 Bones, 6oz Pork, 6oz Brisket. Choice of 3 sides</p>
+                                <p><input type="range" class="form-control-range" id="colica" name="colica" min="0" max="50" value="40" oninput="updatecola(this.value)"></p>
+                            </div> 
+    
+                            <div class="lec_parallax_menu_mini">
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Sokovi</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-danger" id="sokbag">Nekaj</span></div>
+                                </div>
+                                <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                <p><input type="range" class="form-control-range" id="sokec" name="sokec" min="0" max="50" value="40" oninput="updatesok(this.value)"></p>
+                            </div>
+
+                            <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                                    <div class="lec_parallax_menu_mini_title clearfix">
+                                        <h3>Led</h3>
+                                        <div class="lec_menu_spacer"></div>
+                                        <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-info" id="ledbag">Malo</span></div>
+                                    </div>
+                                    <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                    <p><input type="range" class="form-control-range" id="ledek" name="ledek" min="0" max="50" value="9" oninput="updateled(this.value)"></p>
+                                </div>
+                        </div>
+                                                                        
+                    </div>
+
+                    
+
+                </div>
+
+                
+        </section>
+        <!-- section end -->
+
+
+        
+        <!-- section -->
+        <section class="lec_section lec_section_borders_lines lec_wht_txt lec_image_bck lec_wht_txt" data-image="{{ url_for('static', filename='template/images/main_back_bl.jpg') }}">
+                
+                <div class="container text-center">
+                    <style>
+                        .button_g {
+                            text-decoration: none;
+                            background-color: transparent; 
+                            padding: 25px 40px;
+                            border-radius: 8px;
+                            font-weight: normal;
+                            text-transform: uppercase;
+                            transition: all 0.4s ease-in-out;
+                            }
+                        .glow-button:hover {
+                            color: rgba(255, 255, 255, 1);
+                            box-shadow: 0px 0px 80px 50px rgba(223, 183, 52, 0.4);
+                            }
+                    </style>
+                    <input type="submit" class="lec_rust button_g glow-button" value="PONUDBA!">
+
+                </div>
+                <!-- container end -->
+                
+        </section>
+        <!-- section end -->
+        
+        
+
+        <!-- section -->
+        <section class="lec_section lec_image_bck lec_fixed lec_section_no_overlay lec_wht_txt" data-stellar-background-ratio="0.2" data-image="http://placehold.it/1400x800">
+            
+            <!-- Over -->
+            <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+
+            <div class="container text-center">
+                <p><img src="{{ url_for('static', filename='template/images/smoke/smoke_logo2.png') }}" alt="" height="100"></p>
+                <h2 class="lec_rust">ENJOY THE BEVOG BEER</h2>
+                <h3 class="lec_gold_subtitle">Fresh, Cold, Good, Fantastic & More</h3>
+                <a href="https://www.pivoljub.si/category/pivovarna-bevog" target=None class="btn">Shop Now <i class="ti ti-shopping-cart"></i></a>
+                
+            </div>
+            <!-- container end -->
+                
+        </section>
+        <!-- section end -->
+        
+
+        
+
+        </form>
+    </section>
+    <!-- Content End -->
+        
+    
+
+{% endblock content %}

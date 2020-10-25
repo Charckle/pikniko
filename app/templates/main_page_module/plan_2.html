@@ -1,0 +1,573 @@
+{% extends "main_page_module/base_2.html" %}
+
+{% block extraheader %}
+{% endblock extraheader  %}
+
+{% block nav_index %}active{% endblock nav_index %}
+
+
+{% block flashes %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div>
+        {% for category, message in messages %}
+          {% if category == "error" %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% else %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock flashes %}
+
+
+{% block content%}
+<!-- Slider -->
+  <div class="lec_slider lec_slider_inside lec_image_bck lec_fixed lec_wht_txt" data-stellar-background-ratio="0.3" data-image="{{ url_for('static', filename='images/background/front.jpg') }}">
+      
+      <!-- Firefly -->
+      <div class="lec_slider_firefly" data-total="30" data-min="1" data-max="3"></div>
+
+      <!-- Over -->
+      <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+      
+
+      <div class="container">
+
+          <!-- Slider Texts -->
+          <div class="lec_slide_txt lec_slide_center_middle text-center lec_page_fire">
+              <img src="{{ url_for('static', filename='template/images/burger/burger_logo.png') }}" alt="" height="180"><br>
+              <div class="lec_gold">Rezultati</div>
+              <div class="lec_slide_subtitle">Poglej, Preveri,<br>Nabavi!</div>
+          </div>
+          <!-- Slider Texts End -->
+      
+      </div>
+      <!-- container end -->
+
+
+  </div>
+  <!-- Slider End -->
+<!-- Content -->
+<section id="lec_content" class="lec_content">
+
+  <!-- section -->
+  <section class="lec_section lec_section_no_overlay">
+                  
+      <div class="container text-center">
+
+
+          <div class="row row_mb_100 text-left">
+              <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      <h2 class="lec_rust">Povabljeni</h2>
+                      
+                      <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ osnovni_p["odrasli_m"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ osnovni_p["odrasli_m"][1] }}</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ osnovni_p["odrasli_v"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ osnovni_p["odrasli_v"][1] }}</div>
+                          </div>
+                      </div> 
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ osnovni_p["otroci_m"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ osnovni_p["otroci_m"][1] }}</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ osnovni_p["otroci_v"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ osnovni_p["otroci_v"][1] }}</div>
+                          </div>
+                      </div>
+
+
+                      
+                  </div>
+
+
+
+              </div>
+
+
+          </div>
+          <!-- row end -->
+
+          <div class="row">
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posl lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <!-- menu -->
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      
+                      <h2 class="lec_rust">Meso</h2>
+                      
+                      <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ meso["cevap"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ meso["cevap"][1] }} kg</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ meso["plesk"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ meso["plesk"][1] }} kg</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ meso["vrat"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ meso["vrat"][1] }} kg</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ meso["perut"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ meso["perut"][1] }} kg</div>
+                          </div>      
+                      </div>
+
+                      
+                      
+                  </div>
+                  <!-- menu end -->
+
+
+
+              </div>
+              <!-- col end -->
+
+
+
+              <div class="col-md-8 col-md-offset-4 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+              <!-- col end -->
+
+          </div>
+          <!-- row end -->
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="row row_mb_100 text-left">
+              <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      <h2 class="lec_rust">Zelenjava</h2>
+                      
+                      <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ zelenjava["bucke"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ zelenjava["bucke"][1] }} kg</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ zelenjava["gobe"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ zelenjava["gobe"][1] }} kg</div>
+                          </div>
+                      </div> 
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ zelenjava["pap"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ zelenjava["pap"][1] }} kg</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ zelenjava["melan"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ zelenjava["melan"][1] }} kg</div>
+                          </div>
+                      </div>
+
+
+                      
+                  </div>
+
+
+
+              </div>
+
+
+          </div>
+          <!-- row end -->
+
+          <div class="row">
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posl lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <!-- menu -->
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      
+                      <h2 class="lec_rust">Pivo</h2>
+                      
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title lec_parallax_menu_mini_feaut">
+                              <h3>{{ pivo["skup_pivo"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ pivo["skup_pivo"][1] }} l</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ pivo["veliko_pivo"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ pivo["veliko_pivo"][1] }} x 0,5 l</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ pivo["malo_pivo"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ pivo["malo_pivo"][1] }}  x 0,33 l</div>
+                          </div>      
+                      </div>
+                      
+                      
+                  </div>
+                  <!-- menu end -->
+
+
+
+              </div>
+              <!-- col end -->
+
+
+
+              <div class="col-md-8 col-md-offset-4 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+              <!-- col end -->
+
+          </div>
+          <!-- row end -->
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="row row_mb_100 text-left">
+              <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      <h2 class="lec_rust">Sokovi</h2>
+                      
+                      <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ sokovi["skup_cola"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ sokovi["skup_cola"][1] }} l</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ sokovi["cola_literpol"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ sokovi["cola_literpol"][1] }} x 0,5 l</div>
+                          </div>
+                      </div> 
+
+                      <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ sokovi["skup_sok"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ sokovi["skup_sok"][0] }} l</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ sokovi["sok_liter"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ sokovi["sok_liter"][1] }} x 0,5 l</div>
+                          </div>
+                      </div>
+
+
+                      
+                  </div>
+
+
+
+              </div>
+
+
+          </div>
+          <!-- row end -->
+
+          <div class="row">
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posl lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <!-- menu -->
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      
+                      <h2 class="lec_rust">Pivo</h2>
+                      
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title lec_parallax_menu_mini_feaut">
+                              <h3>{{ pivo["skup_pivo"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ pivo["skup_pivo"][1] }} l</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ pivo["veliko_pivo"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ pivo["veliko_pivo"][1] }} x 0,5 l</div>
+                          </div>      
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>{{ pivo["malo_pivo"][0] }}</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ pivo["malo_pivo"][1] }}  x 0,33 l</div>
+                          </div>      
+                      </div>
+                      
+                      
+                  </div>
+                  <!-- menu end -->
+
+
+
+              </div>
+              <!-- col end -->
+
+
+
+              <div class="col-md-8 col-md-offset-4 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+              <!-- col end -->
+
+          </div>
+          <!-- row end -->
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="row row_mb_100 text-left">
+              <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+                  <img src="http://placehold.it/1400x800" alt="">
+              </div>
+
+              <div class="col-md-5 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+
+                  <!-- Over -->
+                  <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                  
+                  <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                      <h2 class="lec_rust">Ostalo</h2>
+                      
+                      <div class="lec_parallax_menu_mini ">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>Led</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ ostalo["led_g"][1] }} kg</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>Čebula</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ ostalo["gram_veb"][1] }} kg</div>
+                          </div>
+                      </div> 
+
+                      <div class="lec_parallax_menu_mini ">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>Kruh</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ ostalo["gram_kruh"][1] }} kg</div>
+                          </div>
+                      </div>
+
+                      <div class="lec_parallax_menu_mini">
+                          <div class="lec_parallax_menu_mini_title clearfix">
+                              <h3>Oglje</h3>
+                              <div class="lec_menu_spacer"></div>
+                              <div class="lec_parallax_menu_mini_price">{{ ostalo["skupno_oglje"][1] }} kg</div>
+                          </div>
+                      </div>
+
+
+                      
+                  </div>
+
+
+
+              </div>
+
+
+          </div>
+          <!-- row end -->
+
+
+
+      </div>
+      <!-- container end -->
+      
+      
+  </section>
+  
+
+  <!-- section -->
+  <section class="lec_section lec_image_bck lec_wht_txt lec_fixed" data-stellar-background-ratio="0.2" data-image="{{ url_for('static', filename='template/images/black-1072366_1920.jpg') }}">
+
+    <!-- Over -->
+    <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+
+
+    <div class="container text-center lec_page_fire">
+        
+        <h2 class="lec_gold">Shop</h2>
+        <h3 class="lec_gold_subtitle">FROM THE KITCHEN</h3>
+        
+        <div class="row">
+
+                <div class="col-md-4 lec_anim_box">
+                    <div class="lec_shop_item">
+                        <span class="lec_shop_item_slider">
+                            <img src="{{ url_for('static', filename='images/logos/ave.png') }}" alt="">
+                        </span>
+                        <a href="#" class="lec_shop_item_title lec_gold_subtitle">
+                            AVE
+                            <b>18.95€</b>
+                        </a>
+
+                        <div class="lec_shop_item_links">
+                            <a href="#shop">Buy It</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 lec_anim_box">
+                    <div class="lec_shop_item">
+                        <span class="lec_shop_item_slider">
+                            <img src="{{ url_for('static', filename='images/logos/mercator.jpg') }}" alt="">
+                        </span>
+                        <a href="#" class="lec_shop_item_title lec_gold_subtitle">
+                            MERCATOR
+                            <b>15.95€</b>
+                        </a>
+                        <div class="lec_shop_item_links">
+                            <a href="#shop">Buy It</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 lec_anim_box">
+                    <div class="lec_shop_item">
+                        <span class="lec_shop_item_slider">
+                            <img src="{{ url_for('static', filename='images/logos/hofer.png') }}" alt="">
+                        </span>
+                        <a href="#" class="lec_shop_item_title lec_gold_subtitle">
+                            HOFER
+                            <b>28.95€</b>
+                        </a>
+                        <div class="lec_shop_item_links">
+                            <a href="#shop">Buy It</a>
+                        </div>
+                    </div>
+                </div>
+
+        
+        </div>
+        <!-- row end -->
+
+    </div>
+    <!-- container end -->
+
+  </section>
+  <!-- section end -->
+
+</section>
+<!-- content end -->
+{% endblock content %}

@@ -6,7 +6,6 @@ from flask import Blueprint, request, render_template, \
 # Import module forms
 from app.main_page_module.forms import CalculateStuffForm
 
-     
 
 #import os
 import re
@@ -31,7 +30,8 @@ def index():
 
     form = CalculateStuffForm(request.form)
     
-    return render_template("main_page_module/index.html", form = form)
+    #return render_template("main_page_module/index_2.html", form = form)
+    return render_template("main_page_module/index_2.html", form = form)
 
 
 @main_page_module.route('/plan/', methods=['POST'])
@@ -162,41 +162,41 @@ def plan_create():
          "otroci_v": ["Število otrok - Vegi", vegiChild]
          }
         
-        meso = {"cevap": ["Čevapčiči", skupno_cevap],
-         "plesk": ["Pleskavice", skupno_plesk],
-         "vrat": ["Vratovina", skupno_vratovina],
-         "perut": ["Perutničke", skupno_perutinicke]
+        meso = {"cevap": ["Čevapčiči", round(skupno_cevap * 0.001, 2)],
+         "plesk": ["Pleskavice", round(skupno_plesk * 0.001, 2)],
+         "vrat": ["Vratovina", round(skupno_vratovina * 0.001, 2)],
+         "perut": ["Perutničke", round(skupno_perutinicke * 0.001, 2)]
          }
         
         vegi = {
          "vegi": ["Vegi odrasli", skupno_vegi]
          }
         
-        zelenjava = {"bucke": ["Bučke", skupno_bucke],
-         "gobe": ["Gobice", skupno_gobce],
-         "pap": ["Paprika", skupno_paprikas],
-         "melan": ["Melancani", skupno_melancanno]
+        zelenjava = {"bucke": ["Bučke", round(skupno_bucke * 0.001, 2)],
+         "gobe": ["Gobice", round(skupno_gobce * 0.001, 2)],
+         "pap": ["Paprika", round(skupno_paprikas * 0.001, 2)],
+         "melan": ["Melancani", round(skupno_melancanno * 0.001, 2)]
          }
         
-        pivo = {"skup_pivo": ["Skupno Pivo ml", skupno_pivo],
+        pivo = {"skup_pivo": ["Skupno Pivo ml", round(skupno_pivo * 0.001, 2)],
          "veliko_pivo": ["Velikega", skupno_pivo_veliko],
          "malo_pivo": ["Ali majhnega", skupno_pivo_malo]
          }
         
-        sokovi = {"skup_cola": ["Skupno Cola ml", skupno_cola],
+        sokovi = {"skup_cola": ["Skupno Cola ml", round(skupno_cola * 0.001, 2)],
          "cola_literpol": ["Cola 1,5l", skupno_cola_literpol],
-         "skup_sok": ["Skupno Sok", skupno_sok],
+         "skup_sok": ["Skupno Sok", round(skupno_sok * 0.001, 2)],
          "sok_liter": ["Sokl 1l", skupno_sok_liter]
          }
         
-        ostalo = {"led_g": ["Gramov Ledu", skupno_led_g],
-         "gram_veb": ["Gramov čebule", skupno_cebula_g],
-         "gram_kruh": ["Gramov kruha", skupno_kruh_g],
+        ostalo = {"led_g": ["Gramov Ledu", round(skupno_led_g * 0.001, 2)],
+         "gram_veb": ["Gramov čebule", round(skupno_cebula_g * 0.001, 2)],
+         "gram_kruh": ["Gramov kruha", round(skupno_kruh_g * 0.001, 2)],
          "kos_kruh": ["Kosov kruha", skupno_kruh_kos],
-         "skupno_oglje": ["Gramov oglja", skupno_oglje]
+         "skupno_oglje": ["Gramov oglja", round(skupno_oglje * 0.001, 2)]
         }
         
-        return render_template("main_page_module/plan.html", osnovni_p=osnovni_p, meso=meso, vegi=vegi, zelenjava=zelenjava, pivo=pivo, sokovi=sokovi, ostalo=ostalo)
+        return render_template("main_page_module/plan_2.html", osnovni_p=osnovni_p, meso=meso, vegi=vegi, zelenjava=zelenjava, pivo=pivo, sokovi=sokovi, ostalo=ostalo)
         #return jsonify(results)
    
     

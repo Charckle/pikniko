@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razor Piknik</title>
+
+
+
+<!-- Library CSS -->
+<link href="{{ url_for('static', filename='template/css/lecker_library.css') }}" rel="stylesheet">
+
+<!-- Icons CSS -->
+<link href="{{ url_for('static', filename='template/fonts/themify-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='template/fonts/selima/stylesheet.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='template/fonts/introrust/stylesheet.css') }}" rel="stylesheet">
+
+<!-- Theme CSS -->
+<link href="{{ url_for('static', filename='template/css/lecker_style.css') }}" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif|Lato" rel="stylesheet">
+
+
+
+</head>
+<body class="lec_france">
+
+<!-- Page -->
+<div class="lec_page lec_page_rust" id="lec_page">
+    <!-- To Top -->
+    <a href="#lec_page" class="lec_top lec_go"><b class="ti ti-angle-up"></b></a>
+    
+    <!-- Header -->
+    <header>  
+        <div class="container">   
+            
+            <!-- Logo -->
+            <a href="/" class="lec_logo">RAZOR <i><span>BBQ &</span><span>Piknik</span></i></a>
+
+
+
+            <!-- Menu -->
+            <div class="lec_main_menu">
+                
+                <div class="lec_main_menu_icon">
+                    <i></i><i></i><i></i><i></i>
+                    <b>Menu</b>
+                    <b class="lec_main_menu_icon_b">Zapri</b>
+                </div>
+            </div>
+            
+            <!-- Menu Content -->
+            <div class="lec_main_menu_content lec_image_bck" data-color="rgba(0,0,0,0.9)" data-image="http://placehold.it/1400x800">
+                <!-- Over -->
+                <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+            </div>
+
+            <div class="lec_main_menu_content_menu lec_wht_txt text-right">
+                <div class="container">
+                    <ul>
+                        <li class="lec_parent"><a href="#">Sponzorji</a>
+                            <ul>
+                                <li><a href="https://www.facebook.com/BevogBrewery" target=None>Bevog Pivo</a></li>
+                                <li><a href="https://www.ave.si/" target=None>Ave</a></li>
+                                <li><a href="https://www.mercator.si/" target=None>Mercator</a></li>
+                                <li><a href="https://www.hofer.si/" target=None>Hofer</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="lec_parent"><a href="#">O Nas</a>
+                            <ul>
+                                <li><a href="#">Kontakt</a></li>
+                                <li><a href="#">Promocija</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <div class="lec_main_menu_content_menu_copy">
+                        <p>© Razor 2020</p>
+                        <!-- Social Buttons -->
+                        <div class="lec_footer_social">
+                            <a href="#"><i class="ti ti-facebook lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-instagram lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-google lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-youtube lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-twitter lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-pinterest lec_icon_box"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- container end -->
+            </div>
+            <!-- menu content end -->
+        
+        </div>
+        <!-- container end -->
+    </header>
+    <!-- Header End -->
+
+
+    {% block flashes %}
+    {% endblock %}
+    
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="lec_image_bck text-center lec_wht_txt" data-image="{{ url_for('static', filename='template/images/main_back_bl.jpg') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Copyrights -->
+                    <p><img src="{{ url_for('static', filename='template/images/smoke/smoke_logo.png') }}" alt="" height="100"></p>
+                    <p>Visa, MasterCard and restaurant vouchers. <br>
+                    Transaction fee for payments by CC or food checks. <br>
+                    No Bancontact.
+                    </p>
+
+                    <!-- Social Buttons -->
+                    <div class="lec_footer_social">
+                        <div data-animation="animation_blocks" data-bottom="@class:noactive" data--100-bottom="@class:active">
+                            <a href="#"><i class="ti ti-facebook lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-instagram lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-google lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-youtube lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-twitter lec_icon_box"></i></a>
+                            <a href="#"><i class="ti ti-pinterest lec_icon_box"></i></a>
+                        </div>
+                    </div>
+
+                    <p>© Razor 2020</p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+</div>
+<!-- Page End -->
+
+
+    <!-- JQuery -->
+    <script src="{{ url_for('static', filename='template/js/jquery-1.12.4.min.js') }}"></script> 
+    <!-- Library JS -->
+    <script src="{{ url_for('static', filename='template/js/lecker_library.js') }}"></script> 
+
+    <!-- Theme JS -->
+    <script src="{{ url_for('static', filename='template/js/lecker_script.js') }}"></script>
+
+
+</body>
+</html>
