@@ -598,7 +598,7 @@
                 <div class="container text-center">
                     <style>
                         .button_g {
-                            font-size: min(10vw, 400p);
+                            font-size: 10vw;
                             text-decoration: none;
                             background-color: transparent; 
                             padding: 25px 40px;
@@ -611,8 +611,14 @@
                             color: rgba(255, 255, 255, 1);
                             box-shadow: 0px 0px 100px 50px rgba(223, 183, 52, 0.4);
                             }
+                        
+                         @media screen and (min-width: 600px) {
+                            .button_g {
+                                font-size: 70px;
+                            }
+                        }
                     </style>
-                    <input type="submit" class="lec_rust button_g glow-button" value="PONUDBA!">
+                    <input type="submit" class="lec_section_no_overlay lec_rust button_g glow-button" value="PONUDBA!">
 
                 </div>
                 <!-- container end -->
