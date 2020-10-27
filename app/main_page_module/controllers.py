@@ -114,9 +114,9 @@ def plan_create():
         pivo_ml = 1500
         cola_odrasli_ml = 1200
         cola_otroci_ml = 700
-        sok_odrasli_ml = 1200
-        sok_otroci_ml = 700
-        led_odrasli_g = 150
+        sok_odrasli_ml = 780
+        sok_otroci_ml = 455
+        led_odrasli_g = 750
         
         #teza na kos
         kruh_g = 50
