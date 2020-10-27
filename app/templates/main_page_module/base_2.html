@@ -32,7 +32,7 @@
     <a href="#lec_page" class="lec_top lec_go"><b class="ti ti-angle-up"></b></a>
     
     <!-- Header -->
-    <header>  
+    <header class="glava">  
         <div class="container">   
             
             <!-- Logo -->
@@ -143,6 +143,8 @@
 <!-- Page End -->
 
 
+
+
     <!-- JQuery -->
     <script src="{{ url_for('static', filename='template/js/jquery-1.12.4.min.js') }}"></script> 
     <!-- Library JS -->
@@ -151,6 +153,26 @@
     <!-- Theme JS -->
     <script src="{{ url_for('static', filename='template/js/lecker_script.js') }}"></script>
 
-
+    <script>
+        /*
+            $(document).ready(function(){
+              $(window).scroll(function(){
+                  var scroll = $(window).scrollTop();
+                  if (scroll > 400) {
+                    console.log(5 + 6);
+                    $(".glava").animate({ height: 75 });
+                    //$(".glava").css("height" , "75");
+                    $(".glava").css("background" , "rgb(0, 0, 0)");
+                    $(".glava").css("opacity" , "0.6");
+                  }
+                  else{
+                    $(".glava").animate({ height: 0});
+                      $(".glava").css("background" , "rgb(0, 0, 0)");
+                      $(".glava").css("opacity" , "0.6");
+                  }
+              })
+            })
+            */
+        </script>
 </body>
 </html>

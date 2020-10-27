@@ -30,6 +30,14 @@
 
 
 {% block content%}
+
+<style>
+@media only screen and (max-width: 950px) {
+    .hide_img {
+        display: none;
+    }
+}
+</style>
     
 
 
@@ -75,7 +83,8 @@
     <section class="lec_section lec_image_bck">
             
         <div class="row lec_auto_height">
-            <div class="col-md-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/people.jpg') }}">
+            
+            <div class="col-md-6 lec_image_bck hide_img" data-image="{{ url_for('static', filename='images/background/people.jpg') }}">
             </div>
 
             <div class="col-md-6">
@@ -249,7 +258,7 @@
                 
                 <div class="row lec_auto_height">
                     
-                    <div class="col-md-6 col-md-push-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/meso.jpg') }}">
+                    <div class="col-md-6 col-md-push-6 lec_image_bck hide_img" data-image="{{ url_for('static', filename='images/background/meso.jpg') }}">
                     </div>
 
                     <div class="col-md-6 col-md-pull-6">
@@ -386,7 +395,7 @@
         <section class="lec_section lec_image_bck">
                 
                 <div class="row lec_auto_height">
-                    <div class="col-md-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/vege.jpg') }}">
+                    <div class="col-md-6 lec_image_bck hide_img" data-image="{{ url_for('static', filename='images/background/vege.jpg') }}">
                     </div>
 
                     <div class="col-md-6">
@@ -521,7 +530,7 @@
                 
                 <div class="row lec_auto_height">
                     
-                    <div class="col-md-6 col-md-push-6 lec_image_bck" data-image="{{ url_for('static', filename='images/background/drinks.jpg') }}">
+                    <div class="col-md-6 col-md-push-6 lec_image_bck hide_img" data-image="{{ url_for('static', filename='images/background/drinks.jpg') }}">
                     </div>
 
                     <div class="col-md-6 col-md-pull-6">
@@ -589,6 +598,7 @@
                 <div class="container text-center">
                     <style>
                         .button_g {
+                            font-size: min(10vw, 400p);
                             text-decoration: none;
                             background-color: transparent; 
                             padding: 25px 40px;
