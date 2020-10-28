@@ -30,6 +30,16 @@
 
 
 {% block content%}
+
+<style>
+    @media only screen and (max-width: 950px) {
+        .hide_img {
+            display: none;
+        }
+    }
+</style>
+
+
 <!-- Slider -->
   <div class="lec_slider lec_slider_inside lec_image_bck lec_fixed lec_wht_txt" data-stellar-background-ratio="0.3" data-image="{{ url_for('static', filename='images/background/front.jpg') }}">
       
@@ -66,11 +76,11 @@
 
 
           <div class="row row_mb_100 text-left">
-              <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+              <div class="col-md-9 lec_animation_block hide_img" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
                   <img src="{{ url_for('static', filename='images/background/meso_plan.jpg') }}" alt="">
               </div>
 
-              <div class="col-md-9 lec_animation_block" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+              <div class="col-md-9 lec_animation_block hide_img" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
                     <img src="{{ url_for('static', filename='images/background/beer_plan.jpg') }}" alt="">
                 </div>
 
