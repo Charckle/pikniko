@@ -98,6 +98,19 @@
                                 <div class="lec_parallax_menu_mini_price"><span class="badge badge-danger" id="stoseb">10</span></div>
                             </div>
                             <script>
+                                function updateLink(){
+                                    var peopleAtPiknik = document.getElementById("peoplenum").value;
+                                    console.log(peopleAtPiknik)
+                                    var peopleAtPiknikVeg = document.getElementById("vegiSlider").value;
+                                    var stchild = document.getElementById("childnum").value;
+                                    var stvegchild = document.getElementById("vegiChild").value;
+
+                                    var linkObject = document.getElementById("linkToCalc");
+                                    
+                                    linkObject.setAttribute('href', "/plan_optimal/" + peopleAtPiknik + "/" + peopleAtPiknikVeg + "/" + stchild + "/" + stvegchild + "/");
+
+                                }
+
                                 function updatePeople(slideAmount) {
                                     var peopleAtPiknik = document.getElementById("stoseb");
                                     peopleAtPiknik.innerHTML = slideAmount;
@@ -109,6 +122,9 @@
                                     vegiSlider.setAttribute('min', '0');
                                     vegiSlider.setAttribute('max', slideAmount);
                                     vegiSlider.setAttribute('value', 0);
+
+                                    //posodobi povezavo
+                                    updateLink()
                                 }
                             </script>
                             <p>(Feeds 1) 4oz Pork, 4oz Brisket, Choice of 2 Sides</p>
@@ -125,6 +141,8 @@
                                 function updateVeg(slideAmount) {
                                     var peopleAtPiknik = document.getElementById("stveg");
                                     peopleAtPiknik.innerHTML = slideAmount;
+                                    //posodobi povezavo
+                                    updateLink()
                                 }
                             </script>
                             <p>(Feeds 2-3) 4 Bones, 6oz Pork, 6oz Brisket. Choice of 3 sides</p>
@@ -149,6 +167,9 @@
                                     vegiChild.setAttribute('min', '0');
                                     vegiChild.setAttribute('max', slideAmount);
                                     vegiChild.setAttribute('value', 0);
+
+                                    //posodobi povezavo
+                                    updateLink()
                                 }
                             </script>
                             <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
@@ -165,11 +186,16 @@
                                 function updateVegChild(slideAmount) {
                                     var stvegchild = document.getElementById("stvegchild");
                                     stvegchild.innerHTML = slideAmount;
+
+                                    //posodobi povezavo
+                                    updateLink()
                                 }
                             </script>
                             <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
-                            <p><input type="range" class="form-control-range" id="vegiChild" name="vegiChild" min="0" max="30" value="0" oninput="updateVegChild(this.value)"></p>
+                            <p><input type="range" class="form-control-range" id="vegiChild" name="vegiChild" min="0" max="0" value="0" oninput="updateVegChild(this.value)"></p>
                         </div>
+                        <a id="linkToCalc" href="{{ url_for('main_page_module.plan_create_ideal', people=10, vegi=0, child=0, vegichild=0) }}" class="lec_gold_subtitle link_razmerje"><h5>Stisni za idelano razmerje</h5></a>
+
                 </div>
                                                                 
             </div>
@@ -455,18 +481,8 @@
         <script>
             function updatepivo(slideAmount) {
                 var pivbag = document.getElementById("pivbag");
+                stanje = slideAmount;
 
-                if (slideAmount == 0) {
-                    stanje = "Nič";
-                } else if (slideAmount < 10) {
-                    stanje = "Malo";
-                }  else if (slideAmount < 25) {
-                    stanje = "Nekaj";
-                } else if (slideAmount < 40) {
-                    stanje = "Zmerno";
-                } else {
-                    stanje = "Veliko";
-                }
 
                 pivbag.innerHTML = stanje;
             }
@@ -542,10 +558,10 @@
                                 <div class="lec_parallax_menu_mini_title clearfix">
                                     <h3>Pivo</h3>
                                     <div class="lec_menu_spacer"></div>
-                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-warning" id="pivbag">Veliko</span></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-warning" id="pivbag">15</span></div>
                                 </div>
-                                <p>(Feeds 1) 4oz Pork, 4oz Brisket, Choice of 2 Sides</p>
-                                <p><input type="range" class="form-control-range" id="pivicko" name="pivicko" min="0" max="50" value="50" oninput="updatepivo(this.value)"></p>
+                                <p>Število velikih piv na osebo</p>
+                                <p><input type="range" class="form-control-range" id="pivicko" name="pivicko" min="0" max="15" value="15" oninput="updatepivo(this.value)"></p>
                             </div>
     
                             <div class="lec_parallax_menu_mini">
@@ -570,14 +586,14 @@
                             </div>
 
                             <div class="lec_parallax_menu_mini lec_parallax_menu_mini_feaut">
-                                    <div class="lec_parallax_menu_mini_title clearfix">
-                                        <h3>Led</h3>
-                                        <div class="lec_menu_spacer"></div>
-                                        <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-info" id="ledbag">Malo</span></div>
-                                    </div>
-                                    <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
-                                    <p><input type="range" class="form-control-range" id="ledek" name="ledek" min="0" max="50" value="9" oninput="updateled(this.value)"></p>
+                                <div class="lec_parallax_menu_mini_title clearfix">
+                                    <h3>Led</h3>
+                                    <div class="lec_menu_spacer"></div>
+                                    <div class="lec_parallax_menu_mini_price"><span class="badge badge-pill badge-info" id="ledbag">Malo</span></div>
                                 </div>
+                                <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
+                                <p><input type="range" class="form-control-range" id="ledek" name="ledek" min="0" max="50" value="9" oninput="updateled(this.value)"></p>
+                            </div>
                         </div>
                                                                         
                     </div>
