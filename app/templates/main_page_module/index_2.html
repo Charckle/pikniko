@@ -38,8 +38,6 @@
     }
 }
 </style>
-    
-
 
     <!-- Slider -->
     <div class="lec_slider lec_image_bck lec_fixed lec_wht_txt" data-stellar-background-ratio="0.3" data-image="{{ url_for('static', filename='images/background/front.jpg') }}">
@@ -194,7 +192,7 @@
                             <p>(Feeds 4-5) ½ Rack Ribs, 8oz Pork, 8oz Brisket, ½ Chicken, 3 pints of Sides</p>
                             <p><input type="range" class="form-control-range" id="vegiChild" name="vegiChild" min="0" max="0" value="0" oninput="updateVegChild(this.value)"></p>
                         </div>
-                        <a id="linkToCalc" href="{{ url_for('main_page_module.plan_create_ideal', people=10, vegi=0, child=0, vegichild=0) }}" class="lec_gold_subtitle link_razmerje"><h5>Stisni za idelano razmerje</h5></a>
+                        <a id="linkToCalc" href="#izracun" class="scrollLink lec_gold_subtitle link_razmerje"><h5>Stisni za idelano razmerje</h5></a>
 
                 </div>
                                                                 
@@ -611,7 +609,7 @@
         <!-- section -->
         <section class="lec_section lec_section_borders_lines lec_wht_txt lec_image_bck lec_wht_txt" data-image="{{ url_for('static', filename='template/images/main_back_bl.jpg') }}">
                 
-                <div class="container text-center">
+                <div id="izracun" class="container text-center">
                     <style>
                         .button_g {
                             font-size: 10vw;
@@ -643,6 +641,7 @@
         <!-- section end -->
         
         
+        
 
         <!-- section -->
         <section class="lec_section lec_image_bck lec_fixed lec_section_no_overlay lec_wht_txt" data-stellar-background-ratio="0.2" data-image="{{ url_for('static', filename='images/background/bevog.jpg') }}">
@@ -668,7 +667,6 @@
         </form>
     </section>
     <!-- Content End -->
-        
-    
+
 
 {% endblock content %}
