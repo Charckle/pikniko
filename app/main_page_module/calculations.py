@@ -100,7 +100,7 @@ def calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, vr
     
     perutnicke_razmerje = 1.6
     
-    kruh_odrasli_g = 100
+    kruh_odrasli_g = 150
     kruh_otroci_g = 50
     
     cebula_odrasli_g = 25
@@ -186,14 +186,14 @@ def calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, vr
     zelenjava_sum = sum([ list[1] for index, list in zelenjava.items()])
     zelenjava_price = sum([ list[2] for index, list in zelenjava.items()])
     
-    pivo = {"skup_pivo": ["Skupno Pivo ml", round(skupno_pivo * 0.001, 2), round(skupno_pivo * 0.001 * 1, 2)],
+    pivo = {"skup_pivo": ["Skupno Pivo", round(skupno_pivo * 0.001, 2), round(skupno_pivo * 0.001 * 1, 2)],
      "veliko_pivo": ["Velikega", skupno_pivo_veliko, 0],
      "malo_pivo": ["Ali majhnega", skupno_pivo_malo, 0]
      }
     
     pivo_price = sum([ list[2] for index, list in pivo.items()])
     
-    sokovi = {"skup_cola": ["Skupno Cola ml", round(skupno_cola * 0.001, 2), round(skupno_cola * 0.001 * 1.1, 2)],
+    sokovi = {"skup_cola": ["Skupno Cola ", round(skupno_cola * 0.001, 2), round(skupno_cola * 0.001 * 1.1, 2)],
      "cola_literpol": ["Cola 1,5l", skupno_cola_literpol, 0],
      "skup_sok": ["Skupno Sok", round(skupno_sok * 0.001, 2), round(skupno_sok * 0.001 * 1.2, 2)],
      "sok_liter": ["Sokl 1l", skupno_sok_liter, 0]
