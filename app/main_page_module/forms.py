@@ -13,6 +13,8 @@ import re
 import os.path
     
 class CalculateStuffForm(FlaskForm):
+    class Meta:
+        csrf = False    
     
     peoplenum = IntegerField('peoplenum', [validators.InputRequired(message='Vnesi stevilo ljudi, ki bo sodelovalo.')])
     vegiSlider = IntegerField('vegiSlider', [validators.InputRequired(message='Vnesi stevilo vegetarjancev, ki bo sodelovalo.')])

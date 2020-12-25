@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Razor Piknik</title>
+<title>Pikniko</title>
 
-
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
 
 <!-- Library CSS -->
 <link href="{{ url_for('static', filename='template/css/lecker_library.css') }}" rel="stylesheet">
@@ -36,7 +36,7 @@
         <div class="container">   
             
             <!-- Logo -->
-            <a href="/" class="lec_logo">RAZOR <i><span>BBQ &</span><span>Piknik</span></i></a>
+            <a href="/" class="lec_logo">PIKNIKO <i><span>BBQ &</span><span>Piknik</span></i></a>
 
 
 
@@ -59,19 +59,10 @@
             <div class="lec_main_menu_content_menu lec_wht_txt text-right">
                 <div class="container">
                     <ul>
-                        <li class="lec_parent"><a href="#">Sponzorji</a>
-                            <ul>
-                                <li><a href="https://www.facebook.com/BevogBrewery" target=None>Bevog Pivo</a></li>
-                                <li><a href="https://www.ave.si/" target=None>Ave</a></li>
-                                <li><a href="https://www.mercator.si/" target=None>Mercator</a></li>
-                                <li><a href="https://www.hofer.si/" target=None>Hofer</a></li>
-                            </ul>
-                        </li>
 
                         <li class="lec_parent"><a href="#">O Nas</a>
                             <ul>
-                                <li><a href="#">Kontakt</a></li>
-                                <li><a href="#">Promocija</a></li>
+                                <li><a href="/kontakt">Kontakt</a></li>
                             </ul>
                         </li>
 
@@ -79,6 +70,7 @@
                     <div class="lec_main_menu_content_menu_copy">
                         <p>© Razor 2020</p>
                         <!-- Social Buttons -->
+                        <!--
                         <div class="lec_footer_social">
                             <a href="#"><i class="ti ti-facebook lec_icon_box"></i></a>
                             <a href="#"><i class="ti ti-instagram lec_icon_box"></i></a>
@@ -87,6 +79,7 @@
                             <a href="#"><i class="ti ti-twitter lec_icon_box"></i></a>
                             <a href="#"><i class="ti ti-pinterest lec_icon_box"></i></a>
                         </div>
+                        -->
                     </div>
                 </div>
                 <!-- container end -->
@@ -114,12 +107,13 @@
 
                     <!-- Copyrights -->
                     <p><img src="{{ url_for('static', filename='template/images/smoke/smoke_logo.png') }}" alt="" height="100"></p>
-                    <p>Visa, MasterCard and restaurant vouchers. <br>
-                    Transaction fee for payments by CC or food checks. <br>
-                    No Bancontact.
+                    <p>"Its better to have burnt and lost <br>
+                    Then never to have barbecued at all." <br>
+                    -<i>William Shakespeare</i>
                     </p>
 
                     <!-- Social Buttons -->
+                    <!--
                     <div class="lec_footer_social">
                         <div data-animation="animation_blocks" data-bottom="@class:noactive" data--100-bottom="@class:active">
                             <a href="#"><i class="ti ti-facebook lec_icon_box"></i></a>
@@ -130,6 +124,7 @@
                             <a href="#"><i class="ti ti-pinterest lec_icon_box"></i></a>
                         </div>
                     </div>
+                    -->
 
                     <p>© Razor 2020</p>
 

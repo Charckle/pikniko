@@ -1,0 +1,116 @@
+{% extends "main_page_module/base.html" %}
+
+{% block extraheader %}
+{% endblock extraheader  %}
+
+{% block nav_index %}active{% endblock nav_index %}
+
+
+{% block flashes %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div>
+        {% for category, message in messages %}
+          {% if category == "error" %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% else %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock flashes %}
+
+
+{% block content%}
+<br>
+<div class="container-fluid" style="background-color: rgb(255, 255, 255)">
+  <div class="row">
+    <div class="col-md-1">
+      <!-- insert column here -->
+    </div>
+    <div class="col-md-10">
+
+      <h1>Statistika</h1>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div id="chart_pie" style="height: 300px; width: 100%;"></div>
+          </div>
+          <div class="col-md-6">
+              <div id="chart_bar" style="height: 300px; width: 100%;"></div>
+              <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+          </div>
+        </div>
+      </div>
+      <script>
+        window.onload = function() {
+        
+        var chart = new CanvasJS.Chart("chart_pie", {
+          animationEnabled: true,
+          theme: "light2",
+          title: {
+            text: "Obisk po straneh"
+          },
+          data: [{
+            type: "pie",
+            startAngle: 240,
+            yValueFormatString: "##0\" obiski\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+              {y: {{ statistika[0] }}, label: "Landing"},
+              {y: {{ statistika[1] }}, label: "Izračun"},
+              {y: {{ statistika[2] }}, label: "Kontakt"},
+              {y: {{ statistika[3] }}, label: "Klik na pivo"}
+            ]
+          }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("chart_bar", {
+          animationEnabled: true,
+          theme: "light2", // "light1", "light2", "dark1", "dark2"
+          title:{
+            text: "Obisk po mesecih"
+          },
+          data: [{        
+            type: "column",  
+
+            dataPoints: [      
+              { y: {{ meseci[0] }}, label: "Januar" },
+              { y: {{ meseci[1] }},  label: "Februar" },
+              { y: {{ meseci[2] }},  label: "Marec" },
+              { y: {{ meseci[3] }},  label: "April" },
+              { y: {{ meseci[4] }},  label: "Maj" },
+              { y: {{ meseci[5] }}, label: "Junij" },
+              { y: {{ meseci[6] }},  label: "Julij" },
+              { y: {{ meseci[7] }},  label: "Avgust" },
+              { y: {{ meseci[8] }},  label: "September" },
+              { y: {{ meseci[9] }},  label: "Oktober" },
+              { y: {{ meseci[10] }},  label: "November" },
+              { y: {{ meseci[11] }},  label: "December" }
+            ]
+          }]
+        });
+        chart.render();
+        
+        }
+        </script>
+
+    </div>
+  <div class="col">
+    
+      
+  </div>
+</div>
+
+</div>
+{% endblock content %}

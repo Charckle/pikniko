@@ -91,6 +91,7 @@
                   
                   <div class="lec_parallax_menu lec_image_bck lec_fixed">
                       <h2 class="lec_rust">Nakupovalni list</h2>
+                      <h3 class="lec_gold_subtitle"> = {{ price_sum }} €</h3> 
 
                       
                       
@@ -110,22 +111,22 @@
                             <tr>
                                 <td>{{ meso["cevap"][0] }}</td>
                                 <td>{{ meso["cevap"][1] }} kg</td>
-                                <td>12 €</td>
+                                <td>{{ meso["cevap"][2] }} €</td>
                             </tr>
                             <tr>
                                 <td>{{ meso["plesk"][0] }}</td>
                                 <td>{{ meso["plesk"][1] }} kg</td>
-                                <td>94 €</td>
+                                <td>{{ meso["plesk"][2] }} €</td>
                             </tr>
                             <tr>
                                 <td>{{ meso["vrat"][0] }}</td>
                                 <td>{{ meso["vrat"][1] }} kg</td>
-                                <td>24 €</td>
+                                <td>{{ meso["vrat"][2] }} €</td>
                             </tr>
                             <tr>
                                 <td>{{ meso["perut"][0] }}</td>
                                 <td>{{ meso["perut"][1] }} kg</td>
-                                <td>34 €</td>
+                                <td>{{ meso["perut"][2] }} €</td>
                             </tr>
                             </table> 
                       </div>
@@ -146,22 +147,22 @@
                               <tr>
                                   <td>{{ zelenjava["bucke"][0] }}</td>
                                   <td>{{ zelenjava["bucke"][1] }} kg</td>
-                                  <td>12 €</td>
+                                  <td>{{ zelenjava["bucke"][2] }} €</td>
                               </tr>
                               <tr>
                                   <td>{{ zelenjava["gobe"][0] }}</td>
                                   <td>{{ zelenjava["gobe"][1] }} kg</td>
-                                  <td>94 €</td>
+                                  <td>{{ zelenjava["gobe"][2] }} €</td>
                               </tr>
                               <tr>
                                   <td>{{ zelenjava["pap"][0] }}</td>
                                   <td>{{ zelenjava["pap"][1] }} kg</td>
-                                  <td>24 €</td>
+                                  <td>{{ zelenjava["pap"][2] }} €</td>
                               </tr>
                               <tr>
                                   <td>{{ zelenjava["melan"][0] }}</td>
                                   <td>{{ zelenjava["melan"][1] }} kg</td>
-                                  <td>34 €</td>
+                                  <td>{{ zelenjava["melan"][2] }} €</td>
                               </tr>
                               </table> 
                         </div>
@@ -182,7 +183,7 @@
                                 <tr>
                                     <td>{{ pivo["skup_pivo"][0] }}</td>
                                     <td>{{ pivo["skup_pivo"][1] }} l</td>
-                                    <td>12 €</td>
+                                    <td>{{ pivo["skup_pivo"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ pivo["veliko_pivo"][0] }}</td>
@@ -197,7 +198,7 @@
                                 <tr>
                                     <td>{{ sokovi["skup_cola"][0] }}</td>
                                     <td>{{ sokovi["skup_cola"][1] }} l</td>
-                                    <td>34 €</td>
+                                    <td>{{ sokovi["skup_cola"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ sokovi["cola_literpol"][0] }}</td>
@@ -212,7 +213,7 @@
                                 <tr>
                                     <td>Led</td>
                                     <td>{{ ostalo["led_g"][1] }} kg</td>
-                                    <td>12 €</td>
+                                    <td>{{ ostalo["led_g"][2] }} €</td>
                                 </tr>
                                 </table> 
                         </div>
@@ -233,72 +234,72 @@
                                 <tr>
                                     <td>Čebula</td>
                                     <td>{{ ostalo["gram_veb"][1] }} kg</td>
-                                    <td>94 €</td>
+                                    <td>{{ ostalo["gram_veb"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>Kruh</td>
                                     <td>{{ ostalo["gram_kruh"][1] }} kg</td>
-                                    <td>24 €</td>
+                                    <td>{{ ostalo["gram_kruh"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>Kajmak</td>
                                     <td>{{ ostalo["kajmak"][1] }} kg</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["kajmak"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>Ajvar</td>
                                     <td>{{ ostalo["ajvar"][1] }} kg</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["ajvar"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>Ketchup</td>
                                     <td>{{ ostalo["ketchup"][1] }} kg</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["ketchup"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>Majoneza</td>
                                     <td>{{ ostalo["majoneza"][1] }} kg</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["majoneza"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td><a href="http://www.robin-hot.com/trgovina.php">{{ ostalo["pikantna"][0] }}</a></td>
                                     <td><a href="http://www.robin-hot.com/trgovina.php">{{ ostalo["pikantna"][1] }} komad</a></td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["pikantna"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>Oglje</td>
                                     <td>{{ ostalo["skupno_oglje"][1] }} kg</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["skupno_oglje"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ ostalo["olje"][0] }}</td>
                                     <td>{{ ostalo["olje"][1] }} l</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["olje"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ ostalo["rola_papir"][0] }}</td>
                                     <td>{{ ostalo["rola_papir"][1] }} rola</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["rola_papir"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ ostalo["servjet"][0] }}</td>
                                     <td>{{ ostalo["servjet"][1] }} komad</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["servjet"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ ostalo["vrece_cmeti"][0] }}</td>
                                     <td>{{ ostalo["vrece_cmeti"][1] }} kom</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["vrece_cmeti"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ ostalo["kozarci"][0] }}</td>
                                     <td>{{ ostalo["kozarci"][1] }} komad</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["kozarci"][2] }} €</td>
                                 </tr>
                                 <tr>
                                     <td>{{ ostalo["krozniki"][0] }}</td>
                                     <td>{{ ostalo["krozniki"][1] }} komad</td>
-                                    <td>34 €</td>
+                                    <td>{{ ostalo["krozniki"][2] }} €</td>
                                 </tr>
                                 </table> 
                         </div>
@@ -331,68 +332,7 @@
 
     <div class="container text-center lec_page_fire">
         
-        <h2 class="lec_gold">Shop</h2>
-        <h3 class="lec_gold_subtitle">FROM THE KITCHEN</h3>
         
-        <div class="row">
-            <style>
-                .shadow-oktagon{
-                    color: rgba(255, 255, 255, 1);
-                    box-shadow: 0px 0px 100px 50px rgba(223, 183, 52, 0.4);
-                    }
-            
-            </style>
-
-                <div class="col-md-4 lec_anim_box">
-                    <div class="lec_shop_item">
-                        <span class="lec_shop_item_slider">
-                            <img src="{{ url_for('static', filename='images/logos/ave.png') }}" alt="">
-                        </span>
-                        <a href="#" class="lec_shop_item_title lec_gold_subtitle">
-                            AVE
-                            <b>18.95€</b>
-                        </a>
-
-                        <div class="lec_shop_item_links">
-                            <a href="#shop">Buy It</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-4 lec_anim_box">
-                    <div class="lec_shop_item">
-                        <span class="lec_shop_item_slider">
-                            <img src="{{ url_for('static', filename='images/logos/mercator.jpg') }}" alt="">
-                        </span>
-                        <a href="#" class="lec_shop_item_title lec_gold_subtitle" >
-                            MERCATOR
-                            <b style="color:rgb(12, 12, 12);">15.95€</b>
-                        </a>
-                        <div class="lec_shop_item_links">
-                            <a href="#shop" style="color:rgb(12, 12, 12);">Buy It</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 lec_anim_box">
-                    <div class="lec_shop_item">
-                        <span class="lec_shop_item_slider">
-                            <img src="{{ url_for('static', filename='images/logos/hofer.png') }}" alt="">
-                        </span>
-                        <a href="#" class="lec_shop_item_title lec_gold_subtitle">
-                            HOFER
-                            <b>28.95€</b>
-                        </a>
-                        <div class="lec_shop_item_links">
-                            <a href="#shop">Buy It</a>
-                        </div>
-                    </div>
-                </div>
-
-        
-        </div>
-        <!-- row end -->
 
     </div>
     <!-- container end -->

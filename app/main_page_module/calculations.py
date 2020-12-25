@@ -1,4 +1,59 @@
 import math
+import re
+import json
+from unidecode import unidecode
+import datetime
+
+def add_stats(page):
+    mesec = get_date()
+    data = json_read(".", "data.json")
+    data[page][mesec-1] += 1 
+
+    json_write(".", "data.json", data)    
+
+def get_date():
+    dt = datetime.datetime.now()
+
+    return dt.month
+
+#sanitize the code for saving to a file on the OS
+def get_valid_filename(s):
+
+    """
+    Stolen from Django, me thinks?
+    Return the given string converted to a string that can be used for a clean
+    filename. Remove leading and trailing spaces; convert other spaces to
+    underscores; and remove anything that is not an alphanumeric, dash,
+    underscore, or dot.
+    >>> get_valid_filename("john's portrait in 2004.jpg")
+    'johns_portrait_in_2004.jpg'
+    """
+
+    s = unidecode(str(s).strip().replace(' ', '_'))
+
+    return re.sub(r'(?u)[^-\w.]', '', s)
+
+def json_write(location, filename, dictio, sanitation=True):
+    
+    location = location.strip()
+
+    if sanitation == True:
+        filename = get_valid_filename(filename)
+    
+    location_filename = location + "/" + filename
+
+    with open(f'{location_filename}', 'w') as outfile:
+        json.dump(dictio, outfile)
+
+def json_read(location, filename):
+    
+    location_filename = location + "/" + filename
+
+    with open(f'{location_filename}') as json_file:
+        data = json.load(json_file)
+        
+        return data
+    
 
 def calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, vratovina, perutinicke,
                     bucke, gobce, paprikas, melancanno, pivicko, colica, sokec, ledek):
@@ -104,49 +159,64 @@ def calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, vr
      "otroci_v": ["Število otrok - Vegi", vegiChild]
      }
     
-    meso = {"cevap": ["Čevapčiči", round(skupno_cevap * 0.001, 2)],
-     "plesk": ["Pleskavice", round(skupno_plesk * 0.001, 2)],
-     "vrat": ["Vratovina", round(skupno_vratovina * 0.001, 2)],
-     "perut": ["Perutničke", round(skupno_perutinicke * 0.001, 2)]
+    meso = {"cevap": ["Čevapčiči", round(skupno_cevap * 0.001, 2), round(skupno_cevap * 0.001 * 12, 2)],
+     "plesk": ["Pleskavice", round(skupno_plesk * 0.001, 2), round(skupno_plesk * 0.001 * 6.2, 2)],
+     "vrat": ["Vratovina", round(skupno_vratovina * 0.001, 2), round(skupno_vratovina * 0.001 * 7, 2)],
+     "perut": ["Perutničke", round(skupno_perutinicke * 0.001, 2), round(skupno_perutinicke * 0.001 * 5.5, 2)]
      }
+    
+    meso_sum = sum([ list[1] for index, list in meso.items()])
+    meso_price = sum([ list[2] for index, list in meso.items()])
     
     vegi = {
      "vegi": ["Vegi odrasli", skupno_vegi]
      }
     
-    zelenjava = {"bucke": ["Bučke", round(skupno_bucke * 0.001, 2)],
-     "gobe": ["Gobice", round(skupno_gobce * 0.001, 2)],
-     "pap": ["Paprika", round(skupno_paprikas * 0.001, 2)],
-     "melan": ["Melancani", round(skupno_melancanno * 0.001, 2)]
+    zelenjava = {"bucke": ["Bučke", round(skupno_bucke * 0.001, 2), round(skupno_bucke * 0.001 * 0.9, 2)],
+     "gobe": ["Gobice", round(skupno_gobce * 0.001, 2), round(skupno_gobce * 0.001 * 5, 2)],
+     "pap": ["Paprika", round(skupno_paprikas * 0.001, 2), round(skupno_paprikas * 0.001*3, 2)],
+     "melan": ["Melancani", round(skupno_melancanno * 0.001, 2), round(skupno_melancanno * 0.001 * 3, 2)]
      }
     
-    pivo = {"skup_pivo": ["Skupno Pivo ml", round(skupno_pivo * 0.001, 2)],
-     "veliko_pivo": ["Velikega", skupno_pivo_veliko],
-     "malo_pivo": ["Ali majhnega", skupno_pivo_malo]
+    zelenjava_sum = sum([ list[1] for index, list in zelenjava.items()])
+    zelenjava_price = sum([ list[2] for index, list in zelenjava.items()])
+    
+    pivo = {"skup_pivo": ["Skupno Pivo ml", round(skupno_pivo * 0.001, 2), round(skupno_pivo * 0.001 * 1, 2)],
+     "veliko_pivo": ["Velikega", skupno_pivo_veliko, 0],
+     "malo_pivo": ["Ali majhnega", skupno_pivo_malo, 0]
      }
     
-    sokovi = {"skup_cola": ["Skupno Cola ml", round(skupno_cola * 0.001, 2)],
-     "cola_literpol": ["Cola 1,5l", skupno_cola_literpol],
-     "skup_sok": ["Skupno Sok", round(skupno_sok * 0.001, 2)],
-     "sok_liter": ["Sokl 1l", skupno_sok_liter]
+    pivo_price = sum([ list[2] for index, list in pivo.items()])
+    
+    sokovi = {"skup_cola": ["Skupno Cola ml", round(skupno_cola * 0.001, 2), round(skupno_cola * 0.001 * 1.1, 2)],
+     "cola_literpol": ["Cola 1,5l", skupno_cola_literpol, 0],
+     "skup_sok": ["Skupno Sok", round(skupno_sok * 0.001, 2), round(skupno_sok * 0.001 * 1.2, 2)],
+     "sok_liter": ["Sokl 1l", skupno_sok_liter, 0]
      }
     
-    ostalo = {"led_g": ["Gramov Ledu", round(skupno_led_g * 0.001, 2)],
-     "gram_veb": ["Gramov čebule", round(skupno_cebula_g * 0.001, 2)],
-     "gram_kruh": ["Gramov kruha", round(skupno_kruh_g * 0.001, 2)],
-     "kos_kruh": ["Kosov kruha", skupno_kruh_kos],
-     "kajmak": ["Kajmak", namazi],
-     "ajvar": ["Ajvar", namazi],
-     "ketchup": ["Ketchup", namazi],
-     "majoneza": ["Majoneza", round(namazi /2, 2)],
-     "pikantna": ["Robit Hot", 1],
-     "skupno_oglje": ["Oglje", round(skupno_oglje * 0.001, 2)],
-     "olje": ["Olje", 1],     
-     "rola_papir": ["Rola papirja", 1],
-     "servjet": ["Servjeti", skupno_ljudje * 4],
-     "vrece_cmeti": ["Vreče za smeti", math.ceil(skupno_ljudje * 0.2)],
-     "kozarci": ["Kozarci", skupno_ljudje * 3],
-     "krozniki": ["Krožniki", skupno_ljudje * 2]
+    sokovi_price = sum([ list[2] for index, list in sokovi.items()])
+    
+    ostalo = {"led_g": ["Gramov Ledu", round(skupno_led_g * 0.001, 2), round(skupno_led_g * 0.001 * 1.3, 2)],
+     "gram_veb": ["Gramov čebule", round(skupno_cebula_g * 0.001, 2), round(skupno_cebula_g * 0.001 * 1, 2)],
+     "gram_kruh": ["Gramov kruha", round(skupno_kruh_g * 0.001, 2), round(skupno_kruh_g * 0.001 * 1.4, 2)],
+     "kos_kruh": ["Kosov kruha", skupno_kruh_kos, 0],
+     "kajmak": ["Kajmak", namazi, namazi * 2 * 2.9],
+     "ajvar": ["Ajvar", namazi, namazi * 2 * 1.7],
+     "ketchup": ["Ketchup", namazi, namazi * 2 * 2.3],
+     "majoneza": ["Majoneza", round(namazi /2, 2), round(namazi * 2 * 2.29, 2)],
+     "pikantna": ["Robit Hot", 1, 3.4],
+     "skupno_oglje": ["Oglje", round(skupno_oglje * 0.001, 2), round(skupno_oglje * 0.001 * 1.7, 2)],
+     "olje": ["Olje", 1, 1.8],     
+     "rola_papir": ["Rola papirja", 1, 0.9],
+     "servjet": ["Servjeti", skupno_ljudje * 4, (skupno_ljudje * 4) * 0.075],
+     "vrece_cmeti": ["Vreče za smeti", math.ceil(skupno_ljudje * 0.2), math.ceil(skupno_ljudje * 0.2) * 0.18],
+     "kozarci": ["Kozarci", skupno_ljudje * 3, round((skupno_ljudje * 3) * 0.14)],
+     "krozniki": ["Krožniki", skupno_ljudje * 2, round((skupno_ljudje * 2) * 0.14)]
     }
     
-    return osnovni_p, meso, vegi, zelenjava, pivo, sokovi, ostalo
+    ostalo_price = sum([ list[2] for index, list in ostalo.items()])
+    
+    price_sum = meso_price + zelenjava_price + pivo_price + sokovi_price + ostalo_price
+    
+    
+    return osnovni_p, meso, meso_sum, vegi, zelenjava, zelenjava_sum, pivo, sokovi, ostalo, price_sum

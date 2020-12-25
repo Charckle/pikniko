@@ -1,0 +1,140 @@
+﻿{% extends "main_page_module/base_2.html" %}
+
+{% block extraheader %}
+{% endblock extraheader  %}
+
+{% block nav_index %}active{% endblock nav_index %}
+
+
+{% block flashes %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div>
+        {% for category, message in messages %}
+          {% if category == "error" %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% else %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock flashes %}
+
+
+{% block content%}
+
+
+
+<!-- Slider -->
+<div class="lec_slider lec_slider_inside lec_image_bck lec_fixed lec_wht_txt" data-stellar-background-ratio="0.3" data-image="{{ url_for('static', filename='images/background/front.jpg') }}">
+    
+    <!-- Firefly -->
+    <div class="lec_slider_firefly" data-total="30" data-min="1" data-max="3"></div>
+
+    <!-- Over -->
+    <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+    
+
+    <div class="container">
+
+
+        <!-- Slider Texts -->
+        <div class="lec_slide_txt lec_slide_center_middle text-center">
+                <div class="lec_rust lec_slide_title">Imaš vprašanje?</div>
+                <div class="lec_slide_subtitle">Piši nam!</div>
+            </div>
+        <!-- Slider Texts End -->
+    
+    </div>
+    <!-- container end -->
+
+
+</div>
+<!-- Slider End -->
+
+<!-- Content -->
+<section id="lec_content" class="lec_content">
+
+
+
+    <!-- section -->
+    <section class="lec_section lec_section_no_overlay">
+            
+            <!-- Over -->
+            <div class="lec_over" data-color="#333" data-opacity="0.02"></div>
+
+            <div class="container text-center">
+
+                <div class="row">
+                    <div class="col-md-10 lec_animation_block lec_wht_txt" data-bottom-top="transform:translate3d(0px, 40px, 0px)" data-top-bottom="transform:translate3d(0px, -40px, 0px)">
+                        <div class="lec_virtual_close"><i class="ti ti-close"></i></div>
+                        <div class="lec_virtual_play lec_virtual_play_black lec_image_bck">
+
+                            <!-- Slider Texts -->
+                            <div class="lec_slide_txt lec_slide_left_middle">
+                                <img src="{{ url_for('static', filename='template/images/smoke/smoke_logo2.png') }}" alt="" height="160"><br>
+                                <div class="lec_rust">HVALA!</div>
+                                <div class="lec_slide_subtitle">Za Podporo!</div>
+                            </div>
+                            <!-- Slider Texts End -->
+                        </div>
+
+                        <iframe height="615" src="https://www.youtube.com/embed/vBO2q23-6iU?rel=0&amp;showinfo=0" allowfullscreen></iframe>
+                    </div>
+                    <!-- col end -->
+
+                    <div class="col-md-6 lec_animation_block lec_animation_abs_block lec_posr lec_image_bck" data-bottom-top="transform:translate3d(0px, 0px, 0px)" data-top-bottom="transform:translate3d(0px, 40px, 0px)" data-image="{{ url_for('static', filename='template/images/main_back.jpg') }}">
+                        <!-- Over -->
+                        <div class="lec_over" data-color="#000" data-opacity="0.05"></div>
+                        
+                        <div class="lec_parallax_menu lec_image_bck lec_fixed">
+                            <h2 class="lec_rust">Zakaj</h2>
+                            <h3 class="lec_gold_subtitle">Pikniko?</h3>
+                            <p>Projekt je nastal zaradi vsakokratne potrebe po računanju količin hrane in pijače, ob organiziranju piknikov. Neglede na število organiziranih piknikov, smo se vedno znova spraševali, kolikšne količine je potrebno nabaviti.</p>
+
+                            <h3>Contact Info</h3>
+
+                            <div class="row lec_contacts_icons">
+                                <i class="ti ti-location-pin"></i> Piknik plac 69<br>
+                                <i class="ti ti-email"></i> info@pikniko.si <br>
+                            </div>
+
+                            <h4>Uporabljene grafike</h4>
+
+                            <div class="row lec_contacts_icons">
+                                <a href='https://www.freepik.com/photos/food'>freepik</a>, 
+                                <a href='https://www.freepik.com/photos/food'>valeria_aksakova</a>, 
+                                <a href='https://www.freepik.com/photos/food'>master1305</a>, 
+                                <a href='https://www.freepik.com/photos/food'>rawpixel.com</a>, 
+                                <a href='https://www.freepik.com/photos/background'>Kireyonok_Yuliya</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col end -->
+
+
+                </div>
+                <!-- row end -->
+            </div>
+            <!-- container end -->
+                
+            
+    </section>
+    <!-- section end -->
+
+    
+
+    
+
+</section>
+<!-- Content End -->
+
+{% endblock content %}
