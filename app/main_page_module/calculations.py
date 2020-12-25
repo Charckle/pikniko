@@ -172,10 +172,15 @@ def calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, vr
      "vegi": ["Vegi odrasli", skupno_vegi]
      }
     
-    zelenjava = {"bucke": ["Bučke", round(skupno_bucke * 0.001, 2), round(skupno_bucke * 0.001 * 0.9, 2)],
-     "gobe": ["Gobice", round(skupno_gobce * 0.001, 2), round(skupno_gobce * 0.001 * 5, 2)],
-     "pap": ["Paprika", round(skupno_paprikas * 0.001, 2), round(skupno_paprikas * 0.001*3, 2)],
-     "melan": ["Melancani", round(skupno_melancanno * 0.001, 2), round(skupno_melancanno * 0.001 * 3, 2)]
+    bucke_vegi = bucke_proc * skupno_vegi
+    gobe_vegi = gobce_proc * skupno_vegi
+    pap_vegi = paprikas_proc * skupno_vegi
+    melan_vegi = melancanno_proc * skupno_vegi
+    
+    zelenjava = {"bucke": ["Bučke", round((skupno_bucke + bucke_vegi) * 0.001, 2), round((skupno_bucke + bucke_vegi)  * 0.001 * 0.9, 2)],
+     "gobe": ["Gobice", round((skupno_gobce + gobe_vegi) * 0.001, 2), round((skupno_gobce + gobe_vegi) * 0.001 * 5, 2)],
+     "pap": ["Paprika", round((skupno_paprikas + pap_vegi) * 0.001, 2), round((skupno_paprikas + pap_vegi) * 0.001*3, 2)],
+     "melan": ["Melancani", round((skupno_melancanno + melan_vegi) * 0.001, 2), round((skupno_melancanno + melan_vegi) * 0.001 * 3, 2)]
      }
     
     zelenjava_sum = sum([ list[1] for index, list in zelenjava.items()])

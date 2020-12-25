@@ -112,7 +112,7 @@ def plan_create():
         add_stats("plan")
         
         return render_template("main_page_module/plan_4.html", osnovni_p=osnovni_p, meso=meso, meso_sum=meso_sum, vegi=vegi, zelenjava=zelenjava, zelenjava_sum=zelenjava_sum,
-                               pivo=pivo, sokovi=sokovi, ostalo=ostalo, price_sum=price_sum)
+                               pivo=pivo, sokovi=sokovi, ostalo=ostalo, price_sum=price_sum, round=round)
     except:
         redirect(url_for("main_page_module.index"))  
 
