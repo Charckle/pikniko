@@ -1,5 +1,5 @@
 # Import flask and template operators
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import time
 from os import environ 
 
@@ -48,9 +48,7 @@ db = DB()
 
 
 # Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html'), 404
+
 
 @app.route('/robots.txt')
 def static_file():
@@ -63,4 +61,7 @@ from app.main_page_module.controllers import main_page_module as main_module
 app.register_blueprint(main_module)
 # app.register_blueprint(xyz_module)
 # ..
+@app.errorhandler(404)
+def not_found(error):
+    return redirect(url_for("main_page_module.index"))
 
