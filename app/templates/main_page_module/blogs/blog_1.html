@@ -1,0 +1,120 @@
+﻿{% extends "main_page_module/base_2.html" %}
+
+{% block extraheader %}
+{% endblock extraheader  %}
+
+{% block nav_index %}active{% endblock nav_index %}
+
+
+{% block flashes %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div>
+        {% for category, message in messages %}
+          {% if category == "error" %}
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% else %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+            <br>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+{% endblock flashes %}
+
+
+{% block content%}
+
+
+
+<!-- Slider -->
+<div class="lec_slider lec_slider_inside lec_image_bck lec_fixed lec_wht_txt" data-stellar-background-ratio="0.3" data-image="{{ url_for('static', filename='images/background/front.jpg') }}">
+        
+  <!-- Firefly -->
+  <div class="lec_slider_firefly" data-total="30" data-min="1" data-max="3"></div>
+
+  <!-- Over -->
+  <div class="lec_over" data-color="#000" data-opacity="0.8"></div>
+  
+
+  <div class="container">
+
+
+      <!-- Slider Texts -->
+      <div class="lec_slide_txt lec_slide_center_middle text-center">
+        <div class="lec_rust lec_slide_title">5 Aktivnosti</div>
+        <div class="lec_slide_subtitle">Za nepozaben<br>Piknik 2021!</div>
+    </div>
+    <!-- Slider Texts End -->
+  
+  </div>
+  <!-- container end -->
+
+
+</div>
+<!-- Slider End -->
+
+<!-- Content -->
+<section id="lec_content" class="lec_content">
+
+
+
+
+
+  <!-- section -->
+  <section class="lec_section">
+
+      <div class="container text-center">
+          <h2 class="lec_rust">Careers</h2>
+          <h3 class="lec_gold_subtitle">Working at Lecker</h3>
+          <p>Thank you for your interest in employment at Lecker! Lecker is committed to providing the best possible climate for maximum development and goal achievement for all employees. Our practice is to treat each employee as an individual.</p>
+
+      </div>
+      <!-- container end -->
+          
+  </section>
+  <!-- section end -->
+
+
+
+  
+
+      
+  
+  
+
+</section>
+<!-- Content End -->
+
+<section class="lec_section lec_image_bck">
+                
+  <div class="row lec_auto_height">
+      
+      <div class="col-md-6 col-md-push-6 lec_image_bck hide_img" data-image="{{ url_for('static', filename='images/background/meso.jpg') }}">
+      </div>
+
+      <div class="col-md-6 col-md-pull-6">
+          <div class="lec_simple_block">
+              <h3 class="lec_gold_subtitle">Working at Lecker</h3>
+
+            <p>Thank you for your interest in employment at Lecker! Lecker is committed to providing the best possible climate for maximum development and goal achievement for all employees. Our practice is to treat each employee as an individual.</p>
+
+          </div>
+                                                          
+      </div>
+
+      
+
+  </div>
+
+  
+</section>
+<!-- section end -->
+
+{% endblock content %}

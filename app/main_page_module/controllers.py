@@ -117,48 +117,43 @@ def plan_create():
         redirect(url_for("main_page_module.index"))  
 
 
-@main_page_module.route('/plan2/', methods=['POST'])
+@main_page_module.route('plan_optimal/<peoplenum>/<vegiSlider>/<childnum>/<vegiChild>', methods=['GET'])
 #@login_required
-def plan_create2():
-
-    form = CalculateStuffForm(request.form)
-    
-    # Verify the sign in form
-    if form.validate_on_submit():
-        peoplenum = form.peoplenum.data
-        vegiSlider = form.vegiSlider.data
-        childnum = form.childnum.data
-        vegiChild = form.vegiChild.data
+def plan_optimal(peoplenum, vegiSlider, childnum, vegiChild):
+    try:
+        peoplenum = int(peoplenum)
+        vegiSlider = int(vegiSlider)
+        childnum = int(childnum)
+        vegiChild = int(vegiChild)
+        cevap = 50
+        plesk = 10
+        vratovina = 20
+        perutinicke = 50
+        bucke = 50
+        gobce = 9
+        paprikas = 20
+        melancanno = 0
+        pivicko = 2
+        colica = 40
+        sokec = 40
+        ledek = 9 
         
-        #meso
-        cevap = form.cevap.data
-        plesk = form.plesk.data
-        vratovina = form.vratovina.data
-        perutinicke = form.perutinicke.data
         
-        #zelenjava
-        bucke = form.bucke.data
-        gobce = form.gobce.data
-        paprikas = form.paprikas.data
-        melancanno = form.melancanno.data
         
-        #pijaca
-        pivicko = form.pivicko.data        
-        colica = form.sokec.data
-        sokec = form.sokec.data
-        ledek = form.ledek.data
-    
         osnovni_p, meso, meso_sum, vegi, zelenjava, zelenjava_sum, pivo, sokovi, ostalo, price_sum = calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, 
                                                                                                                      vratovina, perutinicke, bucke, gobce, paprikas,
                                                                                                                      melancanno, pivicko, colica, sokec, ledek)
+        add_stats("plan")
         
         return render_template("main_page_module/plan_4.html", osnovni_p=osnovni_p, meso=meso, meso_sum=meso_sum, vegi=vegi, zelenjava=zelenjava, zelenjava_sum=zelenjava_sum,
-                               pivo=pivo, sokovi=sokovi, ostalo=ostalo, price_sum=price_sum)
-        #return jsonify(results)
-   
+                               pivo=pivo, sokovi=sokovi, ostalo=ostalo, price_sum=price_sum, round=round)
+    except:
+        redirect(url_for("main_page_module.index"))  
+        
+@main_page_module.route('/blog_1/', methods=['GET'])
+#@login_required
+def blog_1():
     
-    flash('Som Tin Wong!', 'error')
-    
-    return render_template("main_page_module/index.html")
-
+    #return render_template("main_page_module/index_2.html", form = form)
+    return render_template("main_page_module/blogs/blog_1.html")
 

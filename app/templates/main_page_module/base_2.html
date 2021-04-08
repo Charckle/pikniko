@@ -24,7 +24,9 @@
 
 
 </head>
+<div class="loader" ></div>
 <body class="lec_france">
+
 
 <!-- Page -->
 <div class="lec_page lec_page_rust" id="lec_page">
@@ -59,7 +61,11 @@
             <div class="lec_main_menu_content_menu lec_wht_txt text-right">
                 <div class="container">
                     <ul>
-
+                        <li class="lec_parent"><a href="#">Blog</a>
+                            <ul>
+                                <li><a href="/blog_1">Perfect Piknik</a></li>
+                            </ul>
+                        </li>
                         <li class="lec_parent"><a href="#">O Nas</a>
                             <ul>
                                 <li><a href="/kontakt">Kontakt</a></li>
@@ -106,7 +112,7 @@
                 <div class="col-md-12">
 
                     <!-- Copyrights -->
-                    <p><img src="{{ url_for('static', filename='template/images/smoke/smoke_logo.png') }}" alt="" height="100"></p>
+                    <p><img src="{{ url_for('static', filename='template/images/smoke/smoke_logo2.png') }}" alt="" height="140"></p>
                     <p>"Its better to have burnt and lost <br>
                     Then never to have barbecued at all." <br>
                     -<i>William Shakespeare</i>
@@ -174,7 +180,36 @@
     <!-- Theme JS -->
     <script src="{{ url_for('static', filename='template/js/lecker_script.js') }}"></script>
 
+
+    
+
+   <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #0f0f0f;
+        }
+        .loader img{
+            position: relative;
+            left: 40%;
+            top: 40%;
+        }
+    </style>
     <script>
+        window.onload = function() 
+    {
+        //display loader on page load 
+        $('.loader').fadeOut();
+    }
+
+    </script>
+
+    <script>
+
         /*
             $(document).ready(function(){
               $(window).scroll(function(){
