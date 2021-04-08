@@ -110,11 +110,10 @@ def plan_create():
                                                                                                                      vratovina, perutinicke, bucke, gobce, paprikas,
                                                                                                                      melancanno, pivicko, colica, sokec, ledek)
         add_stats("plan")
-        
         return render_template("main_page_module/plan_4.html", osnovni_p=osnovni_p, meso=meso, meso_sum=meso_sum, vegi=vegi, zelenjava=zelenjava, zelenjava_sum=zelenjava_sum,
                                pivo=pivo, sokovi=sokovi, ostalo=ostalo, price_sum=price_sum, round=round)
     except:
-        redirect(url_for("main_page_module.index"))  
+        return redirect(url_for("main_page_module.index"))  
 
 
 @main_page_module.route('plan_optimal/<peoplenum>/<vegiSlider>/<childnum>/<vegiChild>', methods=['GET'])
@@ -148,7 +147,7 @@ def plan_optimal(peoplenum, vegiSlider, childnum, vegiChild):
         return render_template("main_page_module/plan_4.html", osnovni_p=osnovni_p, meso=meso, meso_sum=meso_sum, vegi=vegi, zelenjava=zelenjava, zelenjava_sum=zelenjava_sum,
                                pivo=pivo, sokovi=sokovi, ostalo=ostalo, price_sum=price_sum, round=round)
     except:
-        redirect(url_for("main_page_module.index"))  
+        return redirect(url_for("main_page_module.index"))  
         
 @main_page_module.route('/blog_1/', methods=['GET'])
 #@login_required

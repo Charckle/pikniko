@@ -16,6 +16,9 @@ def get_date():
 
     return dt.month
 
+def zerodivision(n, d):
+    return n / d if d else 0
+
 #sanitize the code for saving to a file on the OS
 def get_valid_filename(s):
 
@@ -67,29 +70,29 @@ def calclulate_food(peoplenum, vegiSlider, childnum, vegiChild, cevap, plesk, vr
     #meso
     skupna_mozna_kolicina_mesa = cevap + plesk + vratovina + perutinicke
     #        
-    cevap_proc = cevap * 1 / skupna_mozna_kolicina_mesa
-    plesk_proc = plesk * 1 / skupna_mozna_kolicina_mesa
-    vratovina_proc = vratovina * 1 / skupna_mozna_kolicina_mesa
-    perutinicke_proc = perutinicke * 1 / skupna_mozna_kolicina_mesa   
+    cevap_proc =  zerodivision((cevap * 1), skupna_mozna_kolicina_mesa)
+    plesk_proc = zerodivision((plesk * 1), skupna_mozna_kolicina_mesa)
+    vratovina_proc = zerodivision((vratovina * 1), skupna_mozna_kolicina_mesa)
+    perutinicke_proc = zerodivision((perutinicke * 1), skupna_mozna_kolicina_mesa)
     
     #zelenjava
     skupna_mozna_kolicina_zelenjave = bucke + gobce + paprikas + melancanno
-    #           
-    bucke_proc = bucke * 1 / skupna_mozna_kolicina_zelenjave
-    gobce_proc = gobce * 1 / skupna_mozna_kolicina_zelenjave
-    paprikas_proc = paprikas * 1 / skupna_mozna_kolicina_zelenjave
-    melancanno_proc = melancanno * 1 / skupna_mozna_kolicina_zelenjave
-    
+    #         
+    bucke_proc = zerodivision((bucke * 1), skupna_mozna_kolicina_zelenjave)
+    gobce_proc = zerodivision((gobce * 1), skupna_mozna_kolicina_zelenjave)
+    paprikas_proc = zerodivision((paprikas * 1), skupna_mozna_kolicina_zelenjave)
+    melancanno_proc = zerodivision((melancanno * 1), skupna_mozna_kolicina_zelenjave)
+
     #pijaca
     skupna_mozna_kolicina_brezalko = colica + sokec
-    colica_proc = colica / skupna_mozna_kolicina_brezalko
-    sokec_proc = sokec / skupna_mozna_kolicina_brezalko
+    colica_proc = zerodivision(colica, skupna_mozna_kolicina_brezalko)
+    sokec_proc = zerodivision(sokec, skupna_mozna_kolicina_brezalko)
     #
     ledek_proc = ledek * 1 / 50
     
     #
     
-    meso_odrasli_g = 200
+    meso_odrasli_g = 250
     meso_otroci_g = 100
     
     vegi_odrasli_g = 200
