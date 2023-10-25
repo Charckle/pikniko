@@ -1,4 +1,4 @@
-FROM python:3.7.5
+FROM python:3.10.13-bullseye
 
 EXPOSE 8000
 
