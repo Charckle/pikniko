@@ -3,51 +3,9 @@ from flask import Flask, render_template, redirect, url_for
 import time
 from os import environ 
 
-# Import SQLite3
-import MySQLdb
-
 # Define the WSGI application object
 app = Flask(__name__)
 
-# Configurations
-if environ.get('ENVCONFIG', "DEV") != 'PROD':
-    app.config.from_object("config.DevelopmentConfig")
-else:
-    app.config.from_object("config.ProductionConfig")
-
-#connection = sqlite3.connect("sqlite:///razor_notes.sqlite3")
-sql_host = app.config['DB_HOST']
-sql_user = app.config['DB_USERNAME']
-sql_passwrd = app.config['DB_PASSWORD']
-sql_db = app.config['DB_NAME']
-
-class DB:
-    conn = None
-  
-    def connect(self):
-        self.conn = MySQLdb.connect(use_unicode = True,
-                                    charset = "utf8",
-                                    host = sql_host,
-                                      user = sql_user,
-                                      passwd = sql_passwrd,
-                                      db = sql_db)
-  
-    def query(self, sql, variables):
-        try:
-            cursor = self.conn.cursor()
-            cursor.execute(sql, variables)
-            
-        except (AttributeError, MySQLdb.OperationalError):
-            self.connect()
-            cursor = self.conn.cursor()
-            cursor.execute(sql, variables)
-            
-        return cursor
-
-db = DB()
-
-
-# Sample HTTP error handling
 
 
 @app.route('/robots.txt')
