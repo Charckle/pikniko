@@ -1,4 +1,4 @@
-FROM python:3.10.13-bullseye
+FROM python:3.11.5-alpine
 
 EXPOSE 8000
 
@@ -8,7 +8,11 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
+RUN adduser -D -u 1000 appuser
+
 COPY . /app
+
+git@github.com:Charckle/pikniko.git
 
 ENTRYPOINT [ "gunicorn" ]
 
