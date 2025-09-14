@@ -12,7 +12,6 @@ RUN adduser -D -u 1000 appuser
 
 COPY . /app
 
-git@github.com:Charckle/pikniko.git
 
 ENTRYPOINT [ "gunicorn" ]
 
